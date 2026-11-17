@@ -1,0 +1,1372 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>松永纱奈作品-作品年表与角色索引</title>
+<meta name="description" content="松永纱奈作品按年份、厂牌与角色类型整理，含2019至2026年发行年表、单体与共演对照、主题分类入口，以及新作观看流程与常见问题解答。">
+<meta name="keywords" content="松永纱奈作品">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232c3f6e'/%3E%3Cpath d='M20 44V20h5v9h9v-9h5v24h-5v-9h-9v9z' fill='%23f2c14e'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#1d2330;
+  --ink-2:#3c4557;
+  --muted:#6b7488;
+  --line:#dfe3ec;
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --primary:#2c3f6e;
+  --primary-2:#41598f;
+  --accent:#b8442e;
+  --accent-soft:#fbeade;
+  --gold:#f2c14e;
+  --teal:#2b7a78;
+  --radius:12px;
+  --radius-sm:8px;
+  --shadow:0 2px 10px rgba(28,36,56,.07);
+  --shadow-lg:0 8px 28px rgba(28,36,56,.12);
+  --space:clamp(16px,2.4vw,28px);
+  --announce-h:38px;
+  --header-h:62px;
+  --maxw:1180px;
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.75;
+  font-size:16px;
+  -webkit-text-size-adjust:100%;
+}
+h1,h2,h3,h4{line-height:1.4;margin:0;color:var(--ink)}
+p{margin:0}
+a{color:var(--primary-2);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;display:block}
+ul,ol{margin:0;padding-left:1.1em}
+button{font-family:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+
+/* ===== 吸顶公告 + 页头 ===== */
+.sticky-top{
+  position:sticky;top:0;z-index:60;
+}
+.announce{
+  background:linear-gradient(90deg,var(--primary),var(--primary-2));
+  color:#eef1f8;
+  height:var(--announce-h);
+  display:flex;align-items:center;
+  font-size:13px;
+}
+.announce .inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 var(--space);
+  display:flex;align-items:center;gap:10px;width:100%;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.announce .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex:0 0 auto}
+.announce b{color:#fff;font-weight:600}
+.announce .brand-mark{color:var(--gold);font-weight:700}
+.site-header{
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+.header-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 var(--space);
+  height:var(--header-h);
+  display:flex;align-items:center;gap:18px;
+}
+.logo{
+  display:flex;align-items:center;gap:10px;
+  flex:0 0 auto;
+}
+.logo svg{width:34px;height:34px;flex:0 0 auto}
+.logo-text{font-weight:700;font-size:17px;letter-spacing:.5px;color:var(--primary)}
+.main-nav{margin-left:auto;display:flex;align-items:center;gap:4px;flex-wrap:nowrap}
+.main-nav a{
+  font-size:14px;color:var(--ink-2);padding:8px 10px;border-radius:var(--radius-sm);
+  white-space:nowrap;
+}
+.main-nav a:hover{background:var(--bg);color:var(--primary);text-decoration:none}
+.header-tools{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.search-box{position:relative}
+.search-box input{
+  width:150px;height:36px;border:1px solid var(--line);border-radius:999px;
+  padding:0 34px 0 14px;font-size:13px;background:var(--bg);color:var(--ink);
+  transition:width .2s,border-color .2s;
+}
+.search-box input:focus{width:200px;border-color:var(--primary-2);background:#fff;outline:none}
+.search-box .search-icon{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  width:16px;height:16px;color:var(--muted);pointer-events:none;
+}
+.search-feedback{
+  position:absolute;top:calc(100% + 8px);right:0;width:280px;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-lg);padding:10px 12px;font-size:13px;color:var(--muted);
+  display:none;
+}
+.search-feedback.show{display:block}
+.search-feedback strong{color:var(--accent)}
+.search-feedback .hit{
+  display:block;padding:6px 4px;color:var(--ink-2);border-bottom:1px dashed var(--line);
+}
+.search-feedback .hit:last-child{border-bottom:0}
+.menu-btn{
+  display:none;background:none;border:1px solid var(--line);border-radius:var(--radius-sm);
+  width:38px;height:38px;align-items:center;justify-content:center;cursor:pointer;color:var(--primary);
+}
+.menu-btn svg{width:20px;height:20px}
+
+/* 锚点偏移 */
+[id]{scroll-margin-top:calc(var(--announce-h) + var(--header-h) + 10px)}
+
+/* ===== 首屏 ===== */
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#1f2c50 0%,#2c3f6e 46%,#3a4f84 100%);
+  color:#e9edf7;
+}
+.hero-deco{position:absolute;inset:0;pointer-events:none}
+.hero-inner{
+  position:relative;max-width:var(--maxw);margin:0 auto;
+  padding:clamp(32px,5vw,60px) var(--space) clamp(36px,5vw,64px);
+  display:grid;grid-template-columns:1.25fr .95fr;gap:clamp(24px,4vw,56px);align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;font-size:12.5px;
+  padding:5px 12px;border:1px solid rgba(242,193,78,.5);border-radius:999px;
+  color:var(--gold);letter-spacing:.6px;margin-bottom:18px;
+}
+.hero h1{
+  font-size:clamp(26px,4.2vw,42px);color:#fff;letter-spacing:1px;font-weight:800;
+}
+.hero h1 .yr{color:var(--gold);font-size:.6em;font-weight:600;letter-spacing:2px;vertical-align:middle;margin-left:10px}
+.hero-desc{
+  margin-top:16px;color:#c6cfe4;font-size:15px;max-width:34em;
+}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:22px;font-size:13.5px;color:#aeb9d4;
+}
+.hero-meta span b{color:#fff;font-weight:700;font-size:16px;font-family:Georgia,"Times New Roman",serif;margin-right:4px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border-radius:999px;
+  font-size:14px;font-weight:600;border:1px solid transparent;cursor:pointer;
+  transition:transform .18s,box-shadow .18s;
+}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn-primary{background:var(--gold);color:#26200d;box-shadow:0 4px 16px rgba(242,193,78,.28)}
+.btn-ghost{background:transparent;color:#e9edf7;border-color:rgba(233,237,247,.4)}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.hero-visual{position:relative;min-height:250px}
+.film-card{
+  position:absolute;border-radius:14px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(3px);
+  box-shadow:0 18px 40px rgba(10,16,32,.35);
+}
+.film-card.c1{width:62%;height:70%;left:2%;top:8%;transform:rotate(-6deg)}
+.film-card.c2{width:58%;height:64%;right:0;top:0;transform:rotate(5deg);background:rgba(242,193,78,.1);border-color:rgba(242,193,78,.35)}
+.film-card.c3{width:48%;height:44%;right:12%;bottom:-4%;transform:rotate(-2deg)}
+.film-card .fc-line{height:7px;border-radius:4px;background:rgba(255,255,255,.22);margin:14px}
+.film-card .fc-line.s{width:55%;background:rgba(242,193,78,.5)}
+.film-card .fc-line.m{width:80%}
+.film-card .fc-badge{
+  position:absolute;right:12px;bottom:12px;font-size:11px;color:var(--gold);
+  border:1px solid rgba(242,193,78,.4);border-radius:6px;padding:2px 7px;letter-spacing:1px;
+}
+.hero-visual .vcap{
+  position:absolute;left:0;bottom:-6px;font-size:11.5px;color:#8b98ba;letter-spacing:.5px;
+}
+
+/* ===== 布局 ===== */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--space)}
+.layout{
+  display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(20px,3vw,36px);
+  align-items:start;padding:clamp(28px,4vw,48px) 0;
+}
+.main-col{min-width:0}
+.side-col{min-width:0;position:sticky;top:calc(var(--announce-h) + var(--header-h) + 16px)}
+
+/* 板块通用 */
+.section{margin-bottom:clamp(34px,4.4vw,54px)}
+.section:last-child{margin-bottom:0}
+.section-head{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:14px;
+  margin-bottom:18px;border-bottom:2px solid var(--primary);padding-bottom:10px;
+}
+.section-head h2{
+  font-size:clamp(19px,2.2vw,23px);position:relative;padding-left:14px;
+}
+.section-head h2::before{
+  content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:5px;height:1.1em;border-radius:3px;background:var(--accent);
+}
+.section-head .more{font-size:13px;color:var(--muted);white-space:nowrap}
+.section-head .more a{color:var(--primary-2)}
+.lead{color:var(--ink-2);font-size:14.5px;margin-bottom:16px}
+
+/* 概览统计 */
+.overview-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px;
+}
+.stat{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 14px 12px;box-shadow:var(--shadow);
+}
+.stat .num{font-family:Georgia,serif;font-size:26px;font-weight:700;color:var(--primary);line-height:1.1}
+.stat .num small{font-size:13px;font-weight:400;color:var(--muted);margin-left:2px}
+.stat .lab{font-size:12.5px;color:var(--muted);margin-top:4px}
+.overview-note{
+  background:var(--accent-soft);border-left:4px solid var(--accent);
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:12px 16px;font-size:13.5px;color:#6b3a2b;
+}
+
+/* 精选卡片网格 */
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  transition:transform .18s,box-shadow .18s;
+}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.card .thumb{position:relative;aspect-ratio:16/9;background:#dfe3ec}
+.card .thumb img{width:100%;height:100%;object-fit:cover}
+.card .thumb .tag{
+  position:absolute;left:10px;top:10px;background:rgba(29,35,48,.82);color:#fff;
+  font-size:11.5px;padding:3px 9px;border-radius:999px;letter-spacing:.4px;
+}
+.card-body{padding:13px 15px 15px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card-body h3{font-size:15px;line-height:1.5}
+.card-body .meta{font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 12px}
+.card-body p{font-size:13px;color:var(--ink-2)}
+.card-body .go{margin-top:auto;font-size:13px;color:var(--primary-2);font-weight:600}
+
+/* 紧凑列表 */
+.list-rows{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.row{
+  display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:14px;align-items:center;
+  padding:13px 16px;border-bottom:1px solid var(--line);font-size:14px;
+}
+.row:last-child{border-bottom:0}
+.row:hover{background:#fafbfe}
+.row .date{font-family:Georgia,serif;color:var(--primary-2);font-size:13px;letter-spacing:.4px}
+.row .t{color:var(--ink);min-width:0}
+.row .t b{font-weight:600}
+.row .t small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.row .rt{font-size:12px;color:#fff;background:var(--teal);border-radius:6px;padding:2px 8px;white-space:nowrap}
+.row .rt.gray{background:#8891a5}
+.row .rt.red{background:var(--accent)}
+
+/* 分类入口 标签索引 */
+.cat-index{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.cat-block{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
+.cat-block h3{font-size:14.5px;margin-bottom:9px;color:var(--primary)}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{
+  font-size:12.5px;padding:5px 11px;border-radius:999px;background:var(--bg);
+  border:1px solid var(--line);color:var(--ink-2);transition:background .15s,color .15s,border-color .15s;
+}
+.chip:hover{background:var(--primary);border-color:var(--primary);color:#fff;text-decoration:none}
+.chip.hot{background:var(--accent-soft);border-color:#f0c9b8;color:#96412b}
+
+/* 深度解析 分栏正文 */
+.deep{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:clamp(18px,2.6vw,30px);box-shadow:var(--shadow);
+}
+.deep h2{font-size:clamp(20px,2.4vw,24px);margin-bottom:6px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.deep .kicker{font-size:12.5px;color:var(--accent);letter-spacing:1px;margin-bottom:10px}
+.deep h3{font-size:16.5px;margin:22px 0 8px;color:var(--primary)}
+.deep p{font-size:14.5px;color:var(--ink-2);margin:10px 0}
+.deep .cols{
+  column-count:2;column-gap:28px;column-rule:1px solid var(--line);
+}
+.deep .cols p{break-inside:avoid}
+@media (max-width:720px){.deep .cols{column-count:1}}
+.judge-box{
+  margin:18px 0;border:1px solid #e3cf9a;background:#fdf8e9;border-radius:var(--radius-sm);
+  padding:14px 16px;
+}
+.judge-box .jt{font-size:13px;font-weight:700;color:#8a6a12;letter-spacing:.6px;margin-bottom:8px}
+.checklist{list-style:none;padding:0;margin:0;font-size:13.5px}
+.checklist li{display:grid;grid-template-columns:22px 1fr;gap:8px;padding:6px 0;border-bottom:1px dashed #e8dcb8;color:#5b4a1c}
+.checklist li:last-child{border-bottom:0}
+.checklist .mk{font-weight:700;color:#a8871f}
+.quote-card{
+  border-left:4px solid var(--primary);background:#f0f3fa;border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  padding:14px 18px;margin:16px 0;font-size:14px;color:var(--ink-2);
+}
+.quote-card cite{display:block;font-style:normal;font-size:12.5px;color:var(--muted);margin-top:6px}
+
+/* 体验指南 编号步骤 */
+.steps{counter-reset:step;display:grid;gap:12px}
+.step{
+  display:grid;grid-template-columns:46px minmax(0,1fr);gap:14px;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 16px;box-shadow:var(--shadow);
+}
+.step::before{
+  counter-increment:step;content:counter(step,decimal-leading-zero);
+  font-family:Georgia,serif;font-size:19px;font-weight:700;color:var(--gold);
+  background:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center;
+  height:46px;
+}
+.step h3{font-size:14.5px;margin-bottom:4px}
+.step p{font-size:13.5px;color:var(--ink-2)}
+
+/* 对照面板 */
+.compare{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;background:var(--card);box-shadow:var(--shadow);
+}
+.compare .col{padding:16px 18px}
+.compare .col + .col{border-left:1px solid var(--line);background:#fafbfe}
+.compare h3{font-size:14.5px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.compare h3 .badge{font-size:11px;padding:2px 8px;border-radius:999px;background:var(--primary);color:#fff}
+.compare .col + .col h3 .badge{background:var(--teal)}
+.compare ul{font-size:13.5px;color:var(--ink-2)}
+.compare li{padding:5px 0;border-bottom:1px dashed var(--line)}
+.compare li:last-child{border-bottom:0}
+.compare li b{color:var(--ink)}
+
+/* 榜单 时间线 */
+.timeline{position:relative;padding-left:22px}
+.timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl-item{position:relative;padding:0 0 16px 0}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{
+  content:"";position:absolute;left:-21px;top:6px;width:11px;height:11px;border-radius:50%;
+  background:#fff;border:3px solid var(--primary-2);
+}
+.tl-item .yr{font-family:Georgia,serif;font-size:13px;color:var(--accent);font-weight:700;letter-spacing:.5px}
+.tl-item h3{font-size:14.5px;margin:2px 0 3px}
+.tl-item p{font-size:13px;color:var(--muted)}
+
+/* FAQ */
+.faq-item{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);
+  margin-bottom:10px;overflow:hidden;
+}
+.faq-item summary{
+  cursor:pointer;padding:13px 16px;font-size:14.5px;font-weight:600;list-style:none;
+  display:flex;align-items:center;gap:10px;color:var(--ink);
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::before{
+  content:"Q";font-family:Georgia,serif;color:var(--accent);font-weight:700;flex:0 0 auto;
+}
+.faq-item summary::after{
+  content:"+";margin-left:auto;color:var(--muted);font-size:18px;font-weight:400;line-height:1;
+}
+.faq-item[open] summary::after{content:"–"}
+.faq-item[open] summary{background:#f2f5fc}
+.faq-a{padding:4px 16px 15px 40px;font-size:13.8px;color:var(--ink-2);border-top:1px solid var(--line)}
+.faq-a strong{color:var(--ink)}
+
+/* 评论 */
+.comments{display:grid;gap:12px}
+.comment{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 16px;box-shadow:var(--shadow);
+}
+.comment .who{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+.avatar{
+  width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;color:#fff;flex:0 0 auto;
+}
+.comment .name{font-size:13.5px;font-weight:600;color:var(--ink)}
+.comment .time{font-size:12px;color:var(--muted);margin-left:auto}
+.comment p{font-size:13.8px;color:var(--ink-2)}
+.comment .ref{
+  display:inline-block;margin-top:7px;font-size:12px;color:var(--primary-2);
+  background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 8px;
+}
+
+/* 资讯 */
+.news-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.news-item{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:5px;
+}
+.news-item .k{font-size:12px;color:var(--accent);letter-spacing:.5px}
+.news-item h3{font-size:14.5px}
+.news-item p{font-size:13.3px;color:var(--ink-2)}
+.news-item .src{font-size:12px;color:var(--muted)}
+
+/* 相关推荐 */
+.reco{display:flex;flex-wrap:wrap;gap:9px}
+.reco a{
+  font-size:13px;padding:7px 13px;border-radius:var(--radius-sm);
+  background:#fff;border:1px solid var(--line);color:var(--ink-2);box-shadow:var(--shadow);
+}
+.reco a:hover{border-color:var(--primary);color:var(--primary);text-decoration:none}
+.reco a b{color:var(--accent);font-weight:600;margin-right:5px}
+
+/* 侧栏 */
+.side-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;box-shadow:var(--shadow);margin-bottom:18px;
+}
+.side-card h2{font-size:15px;margin-bottom:11px;padding-bottom:8px;border-bottom:1px solid var(--line);color:var(--primary)}
+.side-nav{display:grid;gap:2px;font-size:13.5px}
+.side-nav a{
+  display:block;padding:6px 10px;border-radius:6px;color:var(--ink-2);border-left:3px solid transparent;
+}
+.side-nav a:hover{background:var(--bg);text-decoration:none}
+.side-nav a.active{border-left-color:var(--accent);background:var(--bg);color:var(--primary);font-weight:600}
+.rank-list{list-style:none;padding:0;margin:0;counter-reset:rk;display:grid;gap:9px;font-size:13.3px}
+.rank-list li{display:grid;grid-template-columns:24px 1fr auto;gap:8px;align-items:baseline;counter-increment:rk}
+.rank-list li::before{
+  content:counter(rk);font-family:Georgia,serif;font-weight:700;color:var(--muted);font-size:14px;
+}
+.rank-list li:nth-child(-n+3)::before{color:var(--accent)}
+.rank-list .nm{color:var(--ink);min-width:0}
+.rank-list .vl{color:var(--muted);font-size:12px;white-space:nowrap}
+.side-tip{font-size:13px;color:var(--ink-2);background:var(--accent-soft);border-radius:var(--radius-sm);padding:11px 13px}
+.side-tip b{color:#96412b}
+
+/* 页脚 */
+.site-footer{background:#1c2438;color:#b9c2d8;margin-top:clamp(20px,3vw,36px);font-size:13.5px}
+.footer-inner{max-width:var(--maxw);margin:0 auto;padding:clamp(28px,4vw,44px) var(--space) 24px}
+.footer-top{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:26px}
+.footer-brand .logo-text{color:#fff;font-size:17px}
+.footer-brand .logo svg{width:32px;height:32px}
+.footer-brand p{margin-top:12px;color:#8f9ab5;font-size:13px;line-height:1.7;max-width:26em}
+.footer-col h3{font-size:13.5px;color:#e6ebf7;margin-bottom:11px;letter-spacing:.5px}
+.footer-col ul{list-style:none;padding:0;margin:0;display:grid;gap:7px}
+.footer-col a{color:#9aa5c0;font-size:13px}
+.footer-col a:hover{color:var(--gold);text-decoration:none}
+.footer-meta{
+  margin-top:26px;padding-top:16px;border-top:1px solid #2c3752;
+  display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between;
+  font-size:12.3px;color:#7d89a5;
+}
+.footer-meta .note{max-width:56em}
+
+/* 回到顶部 */
+.to-top{
+  position:fixed;right:20px;bottom:24px;width:44px;height:44px;border-radius:50%;
+  background:var(--primary);color:#fff;border:0;display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--shadow-lg);cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .2s,transform .2s,visibility .2s;z-index:70;
+}
+.to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+.to-top svg{width:20px;height:20px}
+
+/* 响应式 */
+@media (max-width:980px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  .side-col{position:static;order:2}
+  .main-col{order:1}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-visual{min-height:200px;max-width:420px}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .main-nav{
+    display:none;position:absolute;top:calc(var(--announce-h) + var(--header-h));left:0;right:0;
+    background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow-lg);
+    flex-direction:column;align-items:stretch;padding:10px var(--space);gap:2px;
+  }
+  .main-nav.open{display:flex}
+  .main-nav a{padding:11px 12px;font-size:14.5px;border-radius:var(--radius-sm)}
+  .menu-btn{display:flex}
+  .header-inner{gap:10px}
+  .search-box input{width:120px}
+  .search-box input:focus{width:150px}
+  .overview-grid{grid-template-columns:repeat(2,1fr)}
+  .card-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:640px){
+  .card-grid{grid-template-columns:1fr}
+  .news-grid{grid-template-columns:1fr}
+  .compare{grid-template-columns:1fr}
+  .compare .col + .col{border-left:0;border-top:1px solid var(--line)}
+  .cat-index{grid-template-columns:1fr}
+  .row{grid-template-columns:64px minmax(0,1fr);row-gap:4px}
+  .row .rt{grid-column:2;justify-self:start;margin-top:2px}
+  .footer-top{grid-template-columns:1fr}
+  .search-box input{width:104px}
+  .search-box input:focus{width:126px}
+  .search-feedback{width:min(280px,72vw)}
+  .to-top{right:14px;bottom:16px;width:40px;height:40px}
+  .step{grid-template-columns:38px minmax(0,1fr);gap:10px}
+  .step::before{height:38px;font-size:16px}
+  .hero-visual{max-width:100%}
+  .film-card.c1,.film-card.c2,.film-card.c3{display:none}
+  .hero-visual{min-height:120px}
+  .hero-visual::after{
+    content:"";position:absolute;inset:0;border-radius:16px;
+    background:
+      linear-gradient(120deg,rgba(242,193,78,.18),rgba(255,255,255,.04) 60%),
+      repeating-linear-gradient(90deg,rgba(255,255,255,.09) 0 2px,transparent 2px 16px);
+    border:1px solid rgba(255,255,255,.16);
+  }
+  .hero-visual .vcap{position:relative;bottom:auto;margin-top:8px}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="sticky-top">
+  <div class="announce" role="region" aria-label="站点公告">
+    <div class="inner">
+      <span class="dot" aria-hidden="true"></span>
+      <span><b class="brand-mark">松永纱奈作品</b> 年表已补入 11 月 4 日发行的《雨上がりの方角》初回盘参数，并完成 2026 年度共演单元交叉核对</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="/#top" aria-label="松永纱奈作品 首页">
+        <svg viewBox="0 0 64 64" role="img" aria-hidden="true" focusable="false">
+          <rect width="64" height="64" rx="14" fill="#2c3f6e"/>
+          <path d="M16 44V20h4.6v9.2h10.8V20h4.6v24h-4.6v-10H20.6v10z" fill="#f2c14e"/>
+          <circle cx="46" cy="24" r="5.4" fill="none" stroke="#f2c14e" stroke-width="2.4"/>
+          <path d="M41 44l5-9 5 9" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">松永纱奈作品</span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="主题导航">
+        <a href="/#overview">领域概览</a>
+        <a href="/#featured">精选推荐</a>
+        <a href="/#latest">最新更新</a>
+        <a href="/#catalog">分类入口</a>
+        <a href="/#deep">深度解析</a>
+        <a href="/#guide">观看指南</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#community">评论</a>
+      </nav>
+
+      <div class="header-tools">
+        <div class="search-box">
+          <input id="siteSearch" type="search" placeholder="搜作品、角色、年份" aria-label="站内搜索">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21" stroke-linecap="round"/>
+          </svg>
+          <div class="search-feedback" id="searchFeedback" role="status" aria-live="polite"></div>
+        </div>
+        <button class="menu-btn" id="menuBtn" aria-label="展开导航菜单" aria-expanded="false" aria-controls="mainNav">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+</div>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero" aria-label="主题首屏">
+    <div class="hero-deco" aria-hidden="true">
+      <svg width="100%" height="100%" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="hg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f2c14e" stop-opacity=".14"/>
+            <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <circle cx="1010" cy="70" r="220" fill="url(#hg)"/>
+        <g stroke="#ffffff" stroke-opacity=".08" stroke-width="1">
+          <path d="M0 360h1200M0 420h1200M0 300h1200"/>
+          <path d="M120 0v480M300 0v480M900 0v480M1080 0v480"/>
+        </g>
+      </svg>
+    </div>
+    <div class="hero-inner">
+      <div>
+        <span class="hero-tag">2019 — 2026 作品档案</span>
+        <h1>松永纱奈作品<span class="yr">Archive</span></h1>
+        <p class="hero-desc">按发行年份、厂牌与角色类型逐条整理的观看入口。已收录单体、共演、合集与影像特典四类条目，标注初回盘与通常盘的差异，方便按线索回查具体场次。</p>
+        <div class="hero-meta">
+          <span><b>128</b>条有效条目</span>
+          <span><b>7</b>家主要厂牌</span>
+          <span><b>2019</b>年首部单发</span>
+          <span><b>11-08</b>数据截止</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/#latest">查看本周更新</a>
+          <a class="btn btn-ghost" href="/#catalog">按角色类型检索</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="film-card c1">
+          <div class="fc-line s"></div><div class="fc-line m"></div><div class="fc-line"></div>
+          <div class="fc-line s"></div><div class="fc-line m"></div>
+          <div class="fc-badge">2019</div>
+        </div>
+        <div class="film-card c2">
+          <div class="fc-line m"></div><div class="fc-line s"></div><div class="fc-line"></div>
+          <div class="fc-line m"></div>
+          <div class="fc-badge">2022</div>
+        </div>
+        <div class="film-card c3">
+          <div class="fc-line"></div><div class="fc-line s"></div>
+          <div class="fc-badge">2026</div>
+        </div>
+        <div class="vcap">示意图：三个时期的条目卡排列</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="layout">
+
+      <div class="main-col">
+
+        <!-- 01 领域概览 -->
+        <section class="section" id="overview" aria-labelledby="h-overview">
+          <div class="section-head">
+            <h2 id="h-overview">领域概览：条目分布与发行结构</h2>
+            <span class="more">统计口径：2019-03 至 2026-11-04</span>
+          </div>
+          <div class="overview-grid">
+            <div class="stat"><div class="num">63<small>部</small></div><div class="lab">单体主演条目</div></div>
+            <div class="stat"><div class="num">41<small>部</small></div><div class="lab">共演与群像</div></div>
+            <div class="stat"><div class="num">24<small>部</small></div><div class="lab">合集与再编辑</div></div>
+            <div class="stat"><div class="num">18<small>部</small></div><div class="lab">影像特典附赠</div></div>
+          </div>
+          <p class="lead">按厂牌拆分，S1 系发布占 38 条，MUTEKI 系 19 条，其余散落在 FALENO、MOODYZ 与独立发行线之间。合集的判别看是否含新摄素材：仅重剪旧片的条目归入再编辑，附 15 分钟以上新内容才计入合集。</p>
+          <div class="overview-note">
+            <b>核对提示：</b>共演条目存在番号互换的情况，2023 年 6 月之后发布的《真夏の選曲》系列，官方页与零售页标注的主演顺序不一致，年表以官方发行公告为准。
+          </div>
+        </section>
+
+        <!-- 02 精选内容推荐 -->
+        <section class="section" id="featured" aria-labelledby="h-featured">
+          <div class="section-head">
+            <h2 id="h-featured">精选内容推荐：四部应优先看的作品</h2>
+            <span class="more"><a href="/#catalog">按类型看全部</a></span>
+          </div>
+          <div class="card-grid">
+            <article class="card">
+              <div class="thumb">
+                <img src="https://picsum.photos/seed/matsunaga-sana-01/640/360" width="640" height="360" loading="lazy" alt="《雨上がりの方角》初回盘封面对应场景，室内窗边构图">
+                <span class="tag">2026 新作</span>
+              </div>
+              <div class="card-body">
+                <h3>《雨上がりの方角》初回盘</h3>
+                <div class="meta"><span>2026-11-04</span><span>S1</span><span>105 分钟</span></div>
+                <p>初回盘附 22 分钟幕后花絮，通常盘删去访谈段落。两版正片相同，选购时按是否需要花絮决定。</p>
+                <span class="go">查看条目详情 →</span>
+              </div>
+            </article>
+            <article class="card">
+              <div class="thumb">
+                <img src="https://picsum.photos/seed/matsunaga-sana-02/640/360" width="640" height="360" loading="lazy" alt="《静かな週末》剧照，住宅区街道的黄昏光">
+                <span class="tag">角色向</span>
+              </div>
+              <div class="card-body">
+                <h3>《静かな週末》住宅区篇</h3>
+                <div class="meta"><span>2025-03-21</span><span>MOODYZ</span><span>共演</span></div>
+                <p>三段式结构，第二段与第四段的场景连续。评论里被提到最多的是 17 分 40 秒的长镜头。</p>
+                <span class="go">查看条目详情 →</span>
+              </div>
+            </article>
+            <article class="card">
+              <div class="thumb">
+                <img src="https://picsum.photos/seed/matsunaga-sana-03/640/360" width="640" height="360" loading="lazy" alt="《夏の余白》外景照，海边防波堤与午后阳光">
+                <span class="tag">高评分</span>
+              </div>
+              <div class="card-body">
+                <h3>《夏の余白》外景单元</h3>
+                <div class="meta"><span>2024-08-09</span><span>FALENO</span><span>96 分钟</span></div>
+                <p>外景占比接近七成，剪辑节奏偏慢。适合想看她处理静态场景的观众，快节奏爱好者可能觉得拖。</p>
+                <span class="go">查看条目详情 →</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 03 最新更新 -->
+        <section class="section" id="latest" aria-labelledby="h-latest">
+          <div class="section-head">
+            <h2 id="h-latest">最新更新：30 天内条目变更记录</h2>
+            <span class="more">时间均为发行或修订日期</span>
+          </div>
+          <div class="list-rows">
+            <a class="row" href="/#featured">
+              <span class="date">11-04</span>
+              <span class="t"><b>《雨上がりの方角》发行</b><small>初回盘与通常盘同日上架，年表同步补入双版本参数</small></span>
+              <span class="rt">新发行</span>
+            </a>
+            <a class="row" href="/#deep">
+              <span class="date">10-30</span>
+              <span class="t"><b>2023 年共演条目番号修订</b><small>《真夏の選曲》第三部官方页更名，主演顺序改为按出场顺序排列</small></span>
+              <span class="rt red">修订</span>
+            </a>
+            <a class="row" href="/#catalog">
+              <span class="date">10-26</span>
+              <span class="t"><b>角色分类新增「职场后辈」标签</b><small>覆盖 2021 年后 9 部含办公室场景的条目</small></span>
+              <span class="rt gray">分类</span>
+            </a>
+            <a class="row" href="/#community">
+              <span class="date">10-21</span>
+              <span class="t"><b>合集《Selected 2020-2022》补录特典时长</b><small>据零售页信息，附赠影像由 9 分钟更正为 14 分钟</small></span>
+              <span class="rt gray">数据</span>
+            </a>
+            <a class="row" href="/#guide">
+              <span class="date">10-14</span>
+              <span class="t"><b>观看指南补充租借与购入的区别</b><small>租借窗口 48 小时，购入可长期回看，两端价格差约 3 倍</small></span>
+              <span class="rt">指南</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 04 分类入口 -->
+        <section class="section" id="catalog" aria-labelledby="h-catalog">
+          <div class="section-head">
+            <h2 id="h-catalog">分类入口：按角色、年份与厂牌检索</h2>
+            <span class="more">共 9 个入口</span>
+          </div>
+          <div class="cat-index">
+            <div class="cat-block">
+              <h3>角色类型</h3>
+              <div class="chips">
+                <a class="chip hot" href="/#catalog">职场后辈</a>
+                <a class="chip" href="/#catalog">邻居家女儿</a>
+                <a class="chip" href="/#catalog">旧友重逢</a>
+                <a class="chip" href="/#catalog">教师设定</a>
+                <a class="chip" href="/#catalog">旅先偶遇</a>
+                <a class="chip" href="/#catalog">同居日常</a>
+              </div>
+            </div>
+            <div class="cat-block">
+              <h3>发行年份</h3>
+              <div class="chips">
+                <a class="chip" href="/#latest">2026 年</a>
+                <a class="chip" href="/#latest">2025 年</a>
+                <a class="chip" href="/#latest">2024 年</a>
+                <a class="chip" href="/#latest">2023 年</a>
+                <a class="chip" href="/#latest">2021—2022</a>
+                <a class="chip" href="/#latest">2019—2020</a>
+              </div>
+            </div>
+            <div class="cat-block">
+              <h3>制作厂牌</h3>
+              <div class="chips">
+                <a class="chip hot" href="/#deep">S1</a>
+                <a class="chip" href="/#deep">MUTEKI</a>
+                <a class="chip" href="/#deep">FALENO</a>
+                <a class="chip" href="/#deep">MOODYZ</a>
+                <a class="chip" href="/#deep">独立发行线</a>
+              </div>
+            </div>
+            <div class="cat-block">
+              <h3>版本与介质</h3>
+              <div class="chips">
+                <a class="chip" href="/#guide">初回限定盘</a>
+                <a class="chip" href="/#guide">通常盘</a>
+                <a class="chip" href="/#guide">Blu-ray</a>
+                <a class="chip" href="/#guide">配信版</a>
+                <a class="chip" href="/#guide">合集再编辑</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 05 深度解析 -->
+        <section class="section" id="deep" aria-labelledby="h-deep">
+          <div class="deep">
+            <div class="kicker">深度解析</div>
+            <h2 id="h-deep">2023 年之后，她的作品重心从「题材冒险」转向「角色精度」</h2>
+            <p>这个判断可以逐条核对：把 2020 至 2022 年的 27 部单体按题材标签统计，跨类型混搭（例如旅先加悬疑、同居加职场）占 15 部；2023 年至今的 31 部里，同一口径只剩 6 部。同期，单场景长镜头的平均时长从 11 分钟升到 17 分钟。</p>
+
+            <div class="cols">
+              <p>2023 年 5 月发行的《夜が明けるまで》是一个可观察的转折点。该部仅两个场景，室内占比 82%，却在零售页的评分区拿到 4.6 分（样本 214 条），高于前两年混搭题材的均值 4.1 分。评分样本不大，但方向清楚：观众对「少场景、深角色」的接受度在上升。</p>
+              <p>厂牌侧的动因更直接。S1 在 2023 年 7 月的发行说明里调整了档期结构，把每月 2 部混搭位缩减为 1 部，空出的档期给了单人长片。这不是某位演员的专属安排，而是整条发行线的调整，但她恰好是那批档期里出片最稳定的名字。</p>
+            </div>
+
+            <h3>说法差异：官方标注与零售页的角色名不一致</h3>
+            <p>《静かな週末》2025 年 3 月发行时，官方页把角色写成「邻居家的长女」，零售页写「旧识」。两处都能查到原文。差异来源据发行方 4 月的补充说明，是剧本修改后角色年龄设定调低两岁，零售页未同步。以官方页为准，但年表里保留两版标注，方便比对引用。</p>
+
+            <div class="judge-box">
+              <div class="jt">可核对清单：判断「角色精度」是否真的提升</div>
+              <ul class="checklist">
+                <li><span class="mk">01</span><span>看场景数：2023 年后单体平均 2.4 个场景，2021 年为 3.9 个</span></li>
+                <li><span class="mk">02</span><span>看台词密度：访谈记录显示 2024 年三部均有超过 40 分钟的对话段落</span></li>
+                <li><span class="mk">03</span><span>看特典内容：近两年初回盘多附角色设定资料，而非单纯花絮</span></li>
+                <li><span class="mk">04</span><span>看评分方差：2024 年条目评分集中在 4.2—4.6，2021 年跨度 3.7—4.7</span></li>
+              </ul>
+            </div>
+
+            <h3>时间线：三个节点支撑同一结论</h3>
+            <p>2023-05《夜が明けるまで》确立双场景结构；2024-02 发行方在访谈里提到「角色先行」的选题流程；2025-09 的《灯りの消えた部屋》进一步压到单场景 78 分钟。三次变化有连续性，但也要承认，单场景长片对节奏控制要求更高，2024 年 11 月的一部就因中段拖沓被评论区点名。</p>
+
+            <div class="quote-card">
+              「同一角色演到第三个场景时，细节会开始重复。砍到两个场景反而逼出更准确的反应。」——摘自 2024 年 2 月发行方公开访谈，发言人署名为制作统筹，原话为日文，此处为转述。
+              <cite>访谈日期 2024-02-16，公开页可查</cite>
+            </div>
+
+            <p>反方观点也存在：2025 年 8 月有评论者统计，长镜头增多后，作品间的场景相似度变高，住宅区与公寓两类布景占了六成。这个统计方法把外景归入「其他」，口径偏粗，但提示了一个真问题——角色精度提升可能以场景多样性下降为代价。两件事都可以成立。</p>
+
+            <h3>尚未确认的部分</h3>
+            <p>2026 年 9 月传出的「制作线调整」说法，目前只有零售端的档期变动作为旁证，发行方未回应。年表将其标为推测，未并入正式条目，也不影响本文的判断。等 12 月档期公布后再看更稳妥。</p>
+          </div>
+        </section>
+
+        <!-- 06 体验指南 -->
+        <section class="section" id="guide" aria-labelledby="h-guide">
+          <div class="section-head">
+            <h2 id="h-guide">体验指南：从检索到看完的五个步骤</h2>
+            <span class="more">适合第一次按条目回看的人</span>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <div>
+                <h3>先确认版本，再看时长</h3>
+                <p>初回盘与通常盘正片时长一致的作品占多数，差异集中在特典。2026 年 11 月的新作两版正片同为 105 分钟，花絮只在初回盘。时长对不上时，先查发行公告，别信聚合站的二次录入。</p>
+              </div>
+            </div>
+            <div class="step">
+              <div>
+                <h3>用角色标签缩小范围</h3>
+                <p>「职场后辈」标签下现有 9 部，最早是 2021 年 4 月的《午休の十分間》。标签按场景设定归类，不按剧情走向，同一角色可能跨两个标签，检索时两个都试。</p>
+              </div>
+            </div>
+            <div class="step">
+              <div>
+                <h3>区分租借与购入</h3>
+                <p>配信平台租借窗口通常 48 小时，价格约为购入的三分之一。购入版可长期回看，但部分早期条目只提供租借。看一次和反复看，选法不同。</p>
+              </div>
+            </div>
+            <div class="step">
+              <div>
+                <h3>核对共演条目的主演顺序</h3>
+                <p>共演条目的封面署名顺序与正片出场顺序不一定一致。2023 年 6 月后的《真夏の選曲》系列已改为按出场顺序，之前的条目仍按署名顺序，引用时标明依据。</p>
+              </div>
+            </div>
+            <div class="step">
+              <div>
+                <h3>看完再回年表补注</h3>
+                <p>年表条目里的场景数、长镜头位置来自逐部核对，偶有遗漏。发现不符时，记下时间点与版本，便于其他人复核。评论区的条目反馈会并入下一次修订。</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:22px">
+            <div class="compare">
+              <div class="col">
+                <h3><span class="badge">初回限定盘</span>附加内容多</h3>
+                <ul>
+                  <li><b>特典：</b>幕后花絮 15—22 分钟</li>
+                  <li><b>资料：</b>常附角色设定页</li>
+                  <li><b>价格：</b>通常盘基础上加约 20%</li>
+                  <li><b>适合：</b>想看她如何处理角色准备过程</li>
+                </ul>
+              </div>
+              <div class="col">
+                <h3><span class="badge">通常盘</span>正片一致</h3>
+                <ul>
+                  <li><b>特典：</b>无，或仅预告片</li>
+                  <li><b>资料：</b>仅封面与梗概</li>
+                  <li><b>价格：</b>基准价</li>
+                  <li><b>适合：</b>只看正片，或已看过初回盘</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 07 FAQ -->
+        <section class="section" id="faq" aria-labelledby="h-faq">
+          <div class="section-head">
+            <h2 id="h-faq">常见问题：版本、番号与分类口径</h2>
+            <span class="more">按提问频次排序</span>
+          </div>
+
+          <details class="faq-item" open>
+            <summary>《雨上がりの方角》初回盘和通常盘差在哪里？</summary>
+            <div class="faq-a">正片均为 105 分钟，画面与音轨一致。<strong>差异只在特典</strong>：初回盘附 22 分钟幕后花絮，含两段未采用的场景排练；通常盘无花絮。两版封面不同，初回盘为竖构图。发行日期同为 2026-11-04。</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>共演作品的番号为什么有两个版本流传？</summary>
+            <div class="faq-a">2023 年 6 月之前，共演条目在官方页与零售页使用不同番号前缀，两者指向同一母带。<strong>《真夏の選曲》系列</strong>是典型例子，官方页用 S1 前缀，零售页沿用旧线编号。年表统一采用官方页番号，并在备注里保留另一版。</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>合集《Selected 2020-2022》包含新拍摄内容吗？</summary>
+            <div class="faq-a">含 14 分钟新摄段落，其余为 2020 至 2022 年条目的重剪。判断依据是零售页 2026-10-21 更正后的规格表，早前标注的 9 分钟为误录。<strong>新摄部分</strong>在片尾字幕里单独列出，位置在总时长 1 小时 42 分之后。</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>角色分类里的「职场后辈」覆盖哪些年份？</summary>
+            <div class="faq-a">目前收录 2021 年 4 月至 2025 年 10 月的 9 部。最早一部为《午休の十分間》，最新为 2025 年 10 月的《残業のあとで》。<strong>分类按场景设定</strong>，不按剧情发展，因此同一部作品可能同时出现在两个标签下。</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>2019 年首部单发作品现在还能看到吗？</summary>
+            <div class="faq-a">配信端仅剩租借，未提供购入选项。发行方 2026 年 8 月的目录页把它归入「archive」区，<strong>画质为当年的标清源</strong>，未做重制。实体盘在二手渠道偶有流通，版本信息以盘面印刷的发行编号为准。</div>
+          </details>
+
+          <details class="faq-item">
+            <summary>为什么同一部作品的评分在不同平台差距明显？</summary>
+            <div class="faq-a">样本结构与打分口径不同。零售页评分多为购入者，样本量小但更集中；聚合站评分含租借用户，<strong>2024 年条目</strong>在两端的均值差约 0.3 分。年表只引用样本量超过 100 条的评分，并标注来源。</div>
+          </details>
+        </section>
+
+        <!-- 08 用户评论 -->
+        <section class="section" id="community" aria-labelledby="h-community">
+          <div class="section-head">
+            <h2 id="h-community">用户评论：条目反馈与不同看法</h2>
+            <span class="more">近 30 天内 126 条，摘录 5 条</span>
+          </div>
+          <div class="comments">
+            <div class="comment">
+              <div class="who">
+                <span class="avatar" style="background:#2c3f6e">林</span>
+                <span class="name">林间道</span>
+                <span class="time">11-06 21:14</span>
+              </div>
+              <p>《雨上がりの方角》窗帘那一场的收音太干净了，雨声像是后贴的。查了花絮才知道是现场录的，只是麦克风位置换过。正片 31 分钟那段对白节奏比她 2024 年的作品慢半拍，反而合适。</p>
+              <span class="ref">指向：《雨上がりの方角》31 分钟段落</span>
+            </div>
+            <div class="comment">
+              <div class="who">
+                <span class="avatar" style="background:#b8442e">S</span>
+                <span class="name">Sato_88</span>
+                <span class="time">11-03 09:02</span>
+              </div>
+              <p>《静かな週末》第二段和第四段场景连续这个说法我保留意见。中间隔了整段回忆，时间线是断的。年表写得像顺拍，容易误导。角色名两版标注倒是挺有用。</p>
+              <span class="ref">指向：《静かな週末》条目备注</span>
+            </div>
+            <div class="comment">
+              <div class="who">
+                <span class="avatar" style="background:#2b7a78">禾</span>
+                <span class="name">禾口</span>
+                <span class="time">10-29 16:40</span>
+              </div>
+              <p>合集那 14 分钟新摄还行，但重剪部分把 2021 年那部的结尾改掉了，原版是开放式收尾，合集里补了一个收束镜头。喜欢原版的会不太适应，买之前最好知道这事。</p>
+              <span class="ref">指向：《Selected 2020-2022》重剪段落</span>
+            </div>
+            <div class="comment">
+              <div class="who">
+                <span class="avatar" style="background:#8891a5">K</span>
+                <span class="name">Kaze</span>
+                <span class="time">10-27 23:05</span>
+              </div>
+              <p>评分那 0.3 分差距其实没多大意义，样本量差了一倍多。不过年表只收 100 条以上的样本这个规则算合理。希望把样本量直接印在条目旁边，省得每次点进去看。</p>
+              <span class="ref">指向：评分来源说明</span>
+            </div>
+            <div class="comment">
+              <div class="who">
+                <span class="avatar" style="background:#f2c14e;color:#3a2c05">七</span>
+                <span class="name">七号观测</span>
+                <span class="time">10-22 11:30</span>
+              </div>
+              <p>「角色精度提升」这个说法有点自我安慰。2025 年那几部公寓场景确实同质化，换个片名几乎分不出来。长镜头不是问题，布景重复才是。深度解析里那句「代价」应该再展开写。</p>
+              <span class="ref">指向：深度解析反方观点段</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 09 相关资讯 -->
+        <section class="section" id="news" aria-labelledby="h-news">
+          <div class="section-head">
+            <h2 id="h-news">相关资讯：发行、修订与行业动态</h2>
+            <span class="more">条目均在上月内</span>
+          </div>
+          <div class="news-grid">
+            <article class="news-item">
+              <span class="k">发行</span>
+              <h3>S1 公布 12 月档期，单人长片占两席</h3>
+              <p>12 月排期表里，单人长片从每月一席增至两席，混搭题材压缩到一席。档期表 11-05 更新，具体标题未公布。</p>
+              <span class="src">来源：发行方档期公告页 · 2026-11-05</span>
+            </article>
+            <article class="news-item">
+              <span class="k">修订</span>
+              <h3>《真夏の選曲》第三部官方页更名完成</h3>
+              <p>副标题由「三人篇」改为「夜行篇」，主演顺序按出场排列。零售端页面尚未同步，预计 11 月中旬更新。</p>
+              <span class="src">来源：官方作品页 · 2026-10-30</span>
+            </article>
+            <article class="news-item">
+              <span class="k">流通</span>
+              <h3>早期条目实体盘二手价上涨约两成</h3>
+              <p>2019 至 2020 年的初回盘在二手渠道的成交均价较 9 月上涨 18%，流通量减少是主因。与配信端下架无直接关联。</p>
+              <span class="src">来源：二手交易平台公开成交记录 · 2026-10-25</span>
+            </article>
+            <article class="news-item">
+              <span class="k">行业</span>
+              <h3>配信平台调整租借窗口，部分条目延长至 72 小时</h3>
+              <p>10 月起，租借窗口在 48 小时基础上按条目区分，长片多为 72 小时。价格未变，退款规则同步调整。</p>
+              <span class="src">来源：平台服务条款变更页 · 2026-10-18</span>
+            </article>
+          </div>
+        </section>
+
+        <!-- 10 相关推荐 -->
+        <section class="section" id="reco" aria-labelledby="h-reco">
+          <div class="section-head">
+            <h2 id="h-reco">相关推荐：可能同样要查的条目</h2>
+            <span class="more">按关联度排序</span>
+          </div>
+          <div class="reco">
+            <a href="/#featured"><b>01</b>2026 年新作初回盘参数对照</a>
+            <a href="/#deep"><b>02</b>单场景长片与双场景结构差异</a>
+            <a href="/#catalog"><b>03</b>职场后辈设定作品清单</a>
+            <a href="/#faq"><b>04</b>共演番号双版本判别法</a>
+            <a href="/#guide"><b>05</b>初回盘与通常盘选购流程</a>
+            <a href="/#community"><b>06</b>《静かな週末》时间线争议</a>
+            <a href="/#news"><b>07</b>2026 年 12 月档期变化</a>
+            <a href="/#deep"><b>08</b>2023 年发行线调整记录</a>
+            <a href="/#latest"><b>09</b>合集《Selected 2020-2022》规格</a>
+            <a href="/#overview"><b>10</b>厂牌分布与条目统计口径</a>
+          </div>
+        </section>
+
+        <!-- 11 补充板块：时间线 + 观感分层 -->
+        <section class="section" id="extra" aria-labelledby="h-extra">
+          <div class="section-head">
+            <h2 id="h-extra">作品年表节点：六个可核对的转折</h2>
+            <span class="more">附观感分层说明</span>
+          </div>
+          <div style="display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:20px;align-items:start" class="extra-grid">
+            <div class="timeline">
+              <div class="tl-item">
+                <span class="yr">2019-03</span>
+                <h3>首部单发作品发行</h3>
+                <p>独立发行线，标清源，现仅租借</p>
+              </div>
+              <div class="tl-item">
+                <span class="yr">2021-04</span>
+                <h3>《午休の十分間》确立职场设定</h3>
+                <p>「职场后辈」标签起点，场景 4 个</p>
+              </div>
+              <div class="tl-item">
+                <span class="yr">2023-05</span>
+                <h3>《夜が明けるまで》改双场景结构</h3>
+                <p>室内占比 82%，评分 4.6（样本 214）</p>
+              </div>
+              <div class="tl-item">
+                <span class="yr">2024-02</span>
+                <h3>发行方访谈提出「角色先行」</h3>
+                <p>制作统筹署名，公开页可查</p>
+              </div>
+              <div class="tl-item">
+                <span class="yr">2025-09</span>
+                <h3>《灯りの消えた部屋》压到单场景</h3>
+                <p>78 分钟连续叙事，争议集中在中段</p>
+              </div>
+              <div class="tl-item">
+                <span class="yr">2026-11</span>
+                <h3>《雨上がりの方角》双版本发行</h3>
+                <p>初回盘附 22 分钟幕后，正片 105 分钟</p>
+              </div>
+            </div>
+            <div>
+              <div class="side-card" style="margin-bottom:14px">
+                <h2>观感分层（按观众目的分）</h2>
+                <ul class="rank-list">
+                  <li><span class="nm">看角色塑造</span><span class="vl">2023 年后为主</span></li>
+                  <li><span class="nm">看场景与摄影</span><span class="vl">2021—2022 年</span></li>
+                  <li><span class="nm">看共演互动</span><span class="vl">2024 年共演单元</span></li>
+                  <li><span class="nm">补早期作品</span><span class="vl">2019—2020 年</span></li>
+                  <li><span class="nm">收藏实体</span><span class="vl">初回盘优先</span></li>
+                </ul>
+              </div>
+              <div class="side-tip">
+                <b>关于分层：</b>这是按观看目的做的粗略归类，不是质量排名。同一年份的条目差异可能大于跨年份差异，具体仍以条目参数为准。
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /main-col -->
+
+      <!-- 侧栏 -->
+      <aside class="side-col" aria-label="侧栏导航与榜单">
+        <nav class="side-card" aria-labelledby="side-nav-h">
+          <h2 id="side-nav-h">栏目导航</h2>
+          <div class="side-nav" id="sideNav">
+            <a href="/#overview">领域概览</a>
+            <a href="/#featured">精选内容推荐</a>
+            <a href="/#latest">最新更新</a>
+            <a href="/#catalog">分类入口</a>
+            <a href="/#deep">深度解析</a>
+            <a href="/#guide">体验指南</a>
+            <a href="/#faq">常见问题</a>
+            <a href="/#community">用户评论</a>
+            <a href="/#news">相关资讯</a>
+            <a href="/#reco">相关推荐</a>
+            <a href="/#extra">作品年表</a>
+          </div>
+        </nav>
+
+        <div class="side-card">
+          <h2>本月检索热度 Top 5</h2>
+          <ol class="rank-list">
+            <li><span class="nm">《雨上がりの方角》</span><span class="vl">1,284</span></li>
+            <li><span class="nm">职场后辈设定</span><span class="vl">962</span></li>
+            <li><span class="nm">《静かな週末》</span><span class="vl">817</span></li>
+            <li><span class="nm">初回盘 通常盘 区别</span><span class="vl">703</span></li>
+            <li><span class="nm">共演番号双版本</span><span class="vl">586</span></li>
+          </ol>
+        </div>
+
+        <div class="side-card">
+          <h2>条目核对说明</h2>
+          <p style="font-size:13px;color:var(--ink-2);margin-bottom:10px">番号、时长与特典参数以发行公告与零售规格表为准。评分只引用样本量过百的来源。</p>
+          <div class="side-tip">数据截止 2026-11-08。修订记录见「最新更新」板块，共 5 条可核对变更。</div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="/#top" aria-label="返回顶部">
+          <svg viewBox="0 0 64 64" role="img" aria-hidden="true" focusable="false">
+            <rect width="64" height="64" rx="14" fill="#2c3f6e"/>
+            <path d="M16 44V20h4.6v9.2h10.8V20h4.6v24h-4.6v-10H20.6v10z" fill="#f2c14e"/>
+            <circle cx="46" cy="24" r="5.4" fill="none" stroke="#f2c14e" stroke-width="2.4"/>
+            <path d="M41 44l5-9 5 9" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+          <span class="logo-text">松永纱奈作品</span>
+        </a>
+        <p>把发行年份、角色设定与版本差异摆在一起对照，方便按具体线索回查每一部条目。</p>
+      </div>
+
+      <div class="footer-col">
+        <h3>年表与条目</h3>
+        <ul>
+          <li><a href="/#overview">统计口径</a></li>
+          <li><a href="/#latest">30 天更新</a></li>
+          <li><a href="/#extra">作品年表节点</a></li>
+          <li><a href="/#featured">年度精选</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>检索与分类</h3>
+        <ul>
+          <li><a href="/#catalog">角色类型</a></li>
+          <li><a href="/#catalog">发行年份</a></li>
+          <li><a href="/#catalog">制作厂牌</a></li>
+          <li><a href="/#reco">相关推荐</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>观看与反馈</h3>
+        <ul>
+          <li><a href="/#guide">选购流程</a></li>
+          <li><a href="/#faq">版本问答</a></li>
+          <li><a href="/#community">条目评论</a></li>
+          <li><a href="/#news">发行资讯</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-meta">
+      <span class="note">页面所列番号、时长、特典与评分均为示例性整理数据，用于展示检索结构；实际参数以发行方公告与零售规格表为准。</span>
+      <span>更新时间 2026-11-08 · 对应正文 5 条更新项</span>
+      <span>© 2026 条目整理</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="回到顶部">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---- 移动菜单 ---- */
+  var menuBtn = document.getElementById('menuBtn');
+  var mainNav = document.getElementById('mainNav');
+
+  function closeMenu(){
+    if(mainNav.classList.contains('open')){
+      mainNav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded','false');
+      menuBtn.setAttribute('aria-label','展开导航菜单');
+    }
+  }
+  menuBtn.addEventListener('click', function(){
+    var open = mainNav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.setAttribute('aria-label', open ? '收起导航菜单' : '展开导航菜单');
+  });
+  mainNav.addEventListener('click', function(e){
+    if(e.target.tagName === 'A' && window.innerWidth <= 980){ closeMenu(); }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeMenu(); }
+  });
+
+  /* ---- 搜索（本地查找 + 无结果反馈） ---- */
+  var input = document.getElementById('siteSearch');
+  var feedback = document.getElementById('searchFeedback');
+
+  var index = [
+    {t:'雨上がりの方角 初回盘 通常盘', s:'#featured'},
+    {t:'静かな週末 住宅区篇 时间线', s:'#community'},
+    {t:'夏の余白 外景单元', s:'#featured'},
+    {t:'Selected 2020-2022 合集 特典时长', s:'#faq'},
+    {t:'职场后辈 角色分类', s:'#catalog'},
+    {t:'共演番号 双版本', s:'#faq'},
+    {t:'深度解析 角色精度', s:'#deep'},
+    {t:'租借 购入 观看流程', s:'#guide'},
+    {t:'12 月档期 发行资讯', s:'#news'},
+    {t:'作品年表 时间线', s:'#extra'}
+  ];
+
+  function renderFeedback(q){
+    var kw = q.trim();
+    if(!kw){
+      feedback.classList.remove('show');
+      feedback.innerHTML = '';
+      return;
+    }
+    var hits = index.filter(function(item){
+      return item.t.indexOf(kw) !== -1;
+    });
+    if(hits.length === 0){
+      feedback.innerHTML = '没有找到包含「<strong>' + escapeHtml(kw) + '</strong>」的条目。可试试「初回盘」「共演番号」「职场后辈」等关键词。';
+    }else{
+      feedback.innerHTML = '找到 ' + hits.length + ' 条相关入口：' +
+        hits.slice(0,5).map(function(h){
+          return '<a class="hit" href="/' + h.s + '">' + escapeHtml(h.t) + '</a>';
+        }).join('');
+    }
+    feedback.classList.add('show');
+  }
+  function escapeHtml(s){
+    return s.replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  input.addEventListener('input', function(){ renderFeedback(this.value); });
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){
+      var first = feedback.querySelector('a.hit');
+      if(first){ window.location.href = first.getAttribute('href'); }
+    }
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.search-box')){ feedback.classList.remove('show'); }
+  });
+
+  /* ---- 回到顶部 ---- */
+  var toTop = document.getElementById('toTop');
+  function onScroll(){
+    if(window.scrollY > 480){ toTop.classList.add('show'); }
+    else{ toTop.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+  toTop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* ---- 侧栏滚动高亮 ---- */
+  var sideLinks = Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  var sections = sideLinks.map(function(a){
+    var id = a.getAttribute('href').replace('/#','');
+    return document.getElementById(id);
+  }).filter(Boolean);
+
+  function highlight(){
+    var pos = window.scrollY + 140;
+    var current = sections[0];
+    sections.forEach(function(sec){
+      if(sec.offsetTop <= pos){ current = sec; }
+    });
+    sideLinks.forEach(function(a){
+      var id = a.getAttribute('href').replace('/#','');
+      if(current && a.getAttribute('href') === '/#' + current.id){
+        a.classList.add('active');
+      }else{
+        a.classList.remove('active');
+      }
+    });
+  }
+  window.addEventListener('scroll', highlight, {passive:true});
+  highlight();
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "松永纱奈作品",
+  "inLanguage": "zh-CN",
+  "description": "松永纱奈作品的发行年表、角色分类与版本差异整理。",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://example.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "《雨上がりの方角》初回盘和通常盘差在哪里？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "正片均为 105 分钟，画面与音轨一致。差异只在特典：初回盘附 22 分钟幕后花絮，通常盘无花絮。发行日期同为 2026-11-04。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "共演作品的番号为什么有两个版本流传？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "2023 年 6 月之前，共演条目在官方页与零售页使用不同番号前缀，两者指向同一母带。年表统一采用官方页番号并保留另一版备注。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "合集《Selected 2020-2022》包含新拍摄内容吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "含 14 分钟新摄段落，其余为 2020 至 2022 年条目的重剪。依据是零售页 2026-10-21 更正后的规格表。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "角色分类里的「职场后辈」覆盖哪些年份？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "目前收录 2021 年 4 月至 2025 年 10 月的 9 部，最早为《午休の十分間》，最新为《残業のあとで》。分类按场景设定而非剧情走向。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "2019 年首部单发作品现在还能看到吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "配信端仅剩租借，未提供购入选项，画质为当年的标清源，未做重制。实体盘在二手渠道偶有流通。"
+      }
+    }
+  ]
+}
+</script>
+</body>
+              </html>
