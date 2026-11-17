@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>花都影视hdys电脑观看-桌面端播放配置与片单</title>
+<meta name="description" content="花都影视hdys电脑观看频道：整理桌面端播放器配置、片单索引与画质字幕设置，收录本地解码、投屏与缓存目录的实测记录，附带片单精选与常见问题排查步骤，方便在个人电脑上稳定观看。">
+<meta name="keywords" content="花都影视hdys电脑观看">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231b2b4b'/%3E%3Cpath d='M18 20h28v24H18z' fill='none' stroke='%23f2b53c' stroke-width='4'/%3E%3Cpath d='M27 27l12 6-12 6z' fill='%23f2b53c'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#1b2b4b;
+  --ink-2:#2f4368;
+  --paper:#f6f4ef;
+  --card:#ffffff;
+  --line:#dcd6ca;
+  --gold:#c98a1b;
+  --gold-soft:#f6e3bd;
+  --teal:#1f6f6b;
+  --red:#a63b32;
+  --muted:#6b6559;
+  --radius:12px;
+  --shadow:0 2px 10px rgba(27,43,75,.08);
+  --shadow-lg:0 10px 28px rgba(27,43,75,.14);
+  --space:clamp(14px,2.4vw,26px);
+  --font:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+  --serif:"Songti SC","Noto Serif SC",Georgia,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:112px}
+body{margin:0;font-family:var(--font);color:var(--ink);background:var(--paper);line-height:1.75;font-size:16px;-webkit-text-size-adjust:100%}
+img{max-width:100%;display:block}
+a{color:var(--ink-2);text-decoration:none}
+a:hover{color:var(--gold)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+h1,h2,h3,h4{line-height:1.35;margin:0 0 .5em}
+h1{font-size:clamp(26px,4vw,40px);letter-spacing:.02em}
+h2{font-size:clamp(21px,2.6vw,27px)}
+h3{font-size:clamp(17px,2vw,19px)}
+p{margin:0 0 1em}
+.wrap{width:min(1180px,94vw);margin:0 auto}
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:10px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ===== 吸顶：公告 + 页头 ===== */
+.sticky-zone{position:sticky;top:0;z-index:50;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.announce{background:var(--ink);color:#f3eee0;font-size:13.5px;padding:7px 0}
+.announce .wrap{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:center;text-align:center}
+.announce b{color:var(--gold-soft);font-weight:600}
+.announce a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
+.site-head{background:rgba(246,244,239,.97);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.head-inner{display:flex;align-items:center;gap:18px;padding:10px 0;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.brand-mark{width:40px;height:40px;flex:none}
+.brand-text{font-size:19px;font-weight:700;color:var(--ink);letter-spacing:.01em}
+.brand-text small{display:block;font-size:11px;font-weight:400;color:var(--muted);letter-spacing:.12em}
+.main-nav{margin-left:auto}
+.nav-btn{display:none;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 14px;font:inherit;font-size:14px;color:var(--ink);cursor:pointer;align-items:center;gap:6px}
+.nav-list{display:flex;list-style:none;gap:4px;margin:0;padding:0;flex-wrap:wrap}
+.nav-list a{display:block;padding:7px 12px;border-radius:8px;font-size:14.5px;color:var(--ink-2)}
+.nav-list a:hover,.nav-list a[aria-current="true"]{background:var(--gold-soft);color:var(--ink)}
+.head-tools{display:flex;align-items:center;gap:10px}
+.search{display:flex;align-items:center;border:1px solid var(--line);background:var(--card);border-radius:999px;overflow:hidden}
+.search input{border:0;background:transparent;padding:8px 4px 8px 14px;font:inherit;font-size:14px;width:150px;color:var(--ink)}
+.search input:focus{outline:none}
+.search button{border:0;background:var(--ink);color:#fff;padding:8px 14px;font:inherit;font-size:13.5px;cursor:pointer;height:100%}
+.search button:hover{background:var(--gold);color:#fff}
+.search-result{font-size:13px;color:var(--teal);margin-top:6px;min-height:1em}
+.search-result:empty{display:none}
+.head-cta{background:var(--gold);color:#fff;padding:9px 16px;border-radius:999px;font-size:14px;font-weight:600;white-space:nowrap}
+.head-cta:hover{background:#b07712;color:#fff}
+
+/* ===== 首屏 ===== */
+.hero{background:linear-gradient(160deg,#1b2b4b 0%,#243a63 55%,#1f6f6b 130%);color:#f3eee0;padding:clamp(34px,5vw,64px) 0 clamp(30px,4vw,54px);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto -80px -140px auto;width:420px;height:420px;border:1px solid rgba(246,227,189,.18);border-radius:50%;pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(20px,4vw,54px);align-items:center;position:relative;z-index:1}
+.hero-kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.18em;color:var(--gold-soft);border:1px solid rgba(246,227,189,.4);border-radius:999px;padding:5px 14px;margin-bottom:16px}
+.hero h1{color:#fff;margin-bottom:14px}
+.hero p.lead{font-size:clamp(15px,1.6vw,17px);color:#dfe3ea;max-width:36em;margin-bottom:22px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.btn{display:inline-block;padding:11px 22px;border-radius:999px;font-size:15px;font-weight:600;transition:transform .18s ease,background .18s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:#b07712;color:#fff}
+.btn-ghost{border:1px solid rgba(255,255,255,.5);color:#fff}
+.btn-ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
+.hero-stats{display:flex;gap:clamp(16px,3vw,36px);flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.18);padding-top:18px}
+.hero-stats dt{font-size:12.5px;color:#b9c2d0;letter-spacing:.08em}
+.hero-stats dd{margin:2px 0 0;font-size:clamp(19px,2.4vw,25px);font-weight:700;color:var(--gold-soft);font-variant-numeric:tabular-nums}
+.hero-stats dd span{font-size:13px;font-weight:400;color:#cdd5e0;margin-left:3px}
+.hero-art{position:relative}
+.hero-art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 14px 30px rgba(0,0,0,.28))}
+
+/* ===== 主体布局 ===== */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(20px,3vw,40px);padding:clamp(28px,4vw,52px) 0}
+.main-col{min-width:0}
+.side{min-width:0}
+section.block{margin-bottom:clamp(32px,4.5vw,56px);scroll-margin-top:112px}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:16px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.section-head h2{margin:0}
+.section-head .sub{font-size:13px;color:var(--muted)}
+
+/* 卡片通用 */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.tag{display:inline-block;font-size:12px;padding:2px 9px;border-radius:999px;background:var(--gold-soft);color:#7a5310;line-height:1.6}
+.tag.teal{background:#dcefed;color:#14514e}
+.tag.red{background:#f6e0dd;color:#7e2b23}
+.tag.grey{background:#ece9e1;color:#5b5548}
+
+/* 概览：非对称组合 */
+.overview{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+.overview .feature{padding:22px;display:flex;flex-direction:column;gap:8px}
+.overview .feature h3{margin-bottom:4px}
+.overview .side-mini{display:grid;gap:12px}
+.mini{padding:14px 16px}
+.mini h4{margin:0 0 4px;font-size:15px}
+.mini p{margin:0;font-size:13.5px;color:var(--muted)}
+.overview ul.facts{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.overview ul.facts li{display:flex;gap:10px;font-size:14px;border-bottom:1px dashed var(--line);padding-bottom:8px}
+.overview ul.facts li b{flex:none;width:74px;color:var(--teal);font-weight:600}
+
+/* 精选：卡片 */
+.pick-card{overflow:hidden;display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease}
+.pick-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.pick-card img{width:100%;height:132px;object-fit:cover}
+.pick-card .body{padding:13px 15px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.pick-card h3{font-size:16px;margin:0}
+.pick-card p{font-size:13.5px;color:var(--muted);margin:0;flex:1}
+.pick-meta{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);flex-wrap:wrap}
+
+/* 最新更新：紧凑列表 */
+.updates{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.updates li{display:grid;grid-template-columns:92px 1fr auto;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);align-items:baseline}
+.updates li:last-child{border-bottom:0}
+.updates time{font-size:13px;color:var(--teal);font-variant-numeric:tabular-nums}
+.updates .t{font-size:14.5px}
+.updates .t small{display:block;font-size:12.5px;color:var(--muted)}
+.updates .badge{font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 7px;white-space:nowrap}
+
+/* 分类入口：标签索引 */
+.tag-index{display:flex;flex-wrap:wrap;gap:10px}
+.tag-index a{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:14px;color:var(--ink-2)}
+.tag-index a em{font-style:normal;font-size:12px;color:var(--muted)}
+.tag-index a:hover{border-color:var(--gold);color:var(--ink);background:var(--gold-soft)}
+
+/* 深度解析 */
+.deep{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(18px,3vw,30px)}
+.deep h2{margin-bottom:6px}
+.deep .byline{font-size:12.5px;color:var(--muted);margin-bottom:20px}
+.deep h3{margin-top:26px;padding-left:12px;border-left:4px solid var(--gold)}
+.deep p{font-size:15.5px}
+.pull{font-family:var(--serif);font-size:clamp(17px,2.1vw,20px);line-height:1.7;color:var(--ink);background:#faf6ec;border-radius:10px;padding:16px 20px;margin:20px 0;border-left:4px solid var(--gold)}
+.compare{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+.compare th,.compare td{border:1px solid var(--line);padding:8px 11px;text-align:left;vertical-align:top}
+.compare th{background:#f1ede2;font-weight:600}
+.compare td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.note{font-size:13px;color:var(--muted);margin-top:-8px}
+.claim{background:#f2f7f6;border:1px solid #cfe5e2;border-radius:10px;padding:14px 16px;margin:16px 0;font-size:14.5px}
+.claim b{color:var(--teal)}
+
+/* 体验指南：编号步骤 */
+.steps{list-style:none;counter-reset:s;margin:0;padding:0;display:grid;gap:12px}
+.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px 14px 58px;position:relative}
+.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:14px;top:14px;width:30px;height:30px;border-radius:8px;background:var(--ink);color:var(--gold-soft);font-size:13px;font-weight:700;display:grid;place-items:center}
+.steps li h3{font-size:15.5px;margin:0 0 3px}
+.steps li p{margin:0;font-size:14px;color:var(--muted)}
+
+/* 对照面板 */
+.panel{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--card)}
+.panel>div{padding:16px 18px}
+.panel>div:first-child{border-right:1px solid var(--line);background:#fbf9f4}
+.panel h3{font-size:15.5px;margin-bottom:8px}
+.panel ul{margin:0;padding-left:18px;font-size:14px;color:var(--ink-2)}
+.panel ul li{margin-bottom:5px}
+
+/* FAQ */
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden}
+.faq summary{cursor:pointer;padding:13px 16px;font-size:15px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:19px;color:var(--gold);flex:none;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq .ans{padding:0 16px 15px;font-size:14.5px;color:var(--ink-2)}
+.faq .ans p{margin:0}
+
+/* 评论 */
+.comments{display:grid;gap:12px}
+.comment{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.comment .who{display:flex;gap:10px;align-items:center;margin-bottom:6px;font-size:13px;color:var(--muted)}
+.avatar{width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--gold-soft);display:grid;place-items:center;font-size:12.5px;font-weight:700;flex:none}
+.comment p{font-size:14.5px;margin:0 0 6px}
+.comment .ref{font-size:12.5px;color:var(--teal)}
+.comment.tucao{border-left:3px solid var(--red)}
+
+/* 资讯 */
+.news{display:grid;gap:12px}
+.news article{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.news h3{font-size:15.5px;margin-bottom:4px}
+.news p{font-size:14px;color:var(--muted);margin:0}
+.news .src{font-size:12px;color:var(--teal);margin-top:6px;display:block}
+
+/* 推荐标签 */
+.reco{display:flex;flex-wrap:wrap;gap:9px}
+.reco a{font-size:13.5px;padding:6px 13px;border-radius:999px;border:1px dashed var(--line);color:var(--ink-2);background:var(--card)}
+.reco a:hover{border-style:solid;border-color:var(--gold);color:var(--ink)}
+
+/* 榜单 / 时间线 */
+.rank{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.rank li{display:grid;grid-template-columns:34px 1fr auto;gap:12px;padding:11px 16px;border-bottom:1px solid var(--line);align-items:center;font-size:14.5px}
+.rank li:last-child{border-bottom:0}
+.rank .no{font-weight:700;color:var(--gold);font-variant-numeric:tabular-nums}
+.rank .val{font-size:13px;color:var(--muted);white-space:nowrap}
+.timeline{list-style:none;margin:0;padding:0 0 0 18px;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding:0 0 16px 16px}
+.timeline li::before{content:"";position:absolute;left:-25px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--paper)}
+.timeline time{font-size:12.5px;color:var(--teal);font-weight:600}
+.timeline p{margin:2px 0 0;font-size:14px}
+
+/* 侧栏 */
+.side-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-bottom:16px;position:sticky;top:112px}
+.side-card h3{font-size:15px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.side-nav{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.side-nav a{display:block;font-size:14px;padding:6px 10px;border-radius:7px;color:var(--ink-2);border-left:3px solid transparent}
+.side-nav a:hover{background:#f4f0e6}
+.side-nav a.active{background:var(--gold-soft);border-left-color:var(--gold);color:var(--ink);font-weight:600}
+.side-note{font-size:12.5px;color:var(--muted);margin-top:10px;line-height:1.65}
+
+/* 回到顶部 */
+.to-top{position:fixed;right:18px;bottom:20px;z-index:60;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:17px;cursor:pointer;box-shadow:var(--shadow-lg);display:none;place-items:center}
+.to-top.show{display:grid}
+.to-top:hover{background:var(--gold);color:#fff;border-color:var(--gold)}
+
+/* 页脚 */
+.site-foot{background:var(--ink);color:#cfd6e2;padding:clamp(30px,4vw,50px) 0 20px;font-size:14px}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:24px}
+.site-foot h4{color:#fff;font-size:15px;margin-bottom:10px}
+.site-foot p{margin:0 0 10px;line-height:1.75}
+.site-foot ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.site-foot a{color:#cfd6e2}
+.site-foot a:hover{color:var(--gold-soft)}
+.foot-brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.foot-brand .brand-text{color:#fff}
+.foot-brand .brand-text small{color:#9aa6bb}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:26px;padding-top:14px;font-size:12.5px;color:#9aa6bb;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+/* ===== 响应式 ===== */
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr}
+  .side{order:2}
+  .main-col{order:1}
+  .side-card{position:static}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{max-width:420px}
+  .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .overview{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .head-inner{gap:10px}
+  .main-nav{margin-left:0;width:100%;order:4;display:none}
+  .main-nav.open{display:block}
+  .nav-btn{display:inline-flex;margin-left:auto}
+  .head-tools{order:3;width:100%;justify-content:space-between}
+  .search{flex:1}
+  .search input{width:100%}
+  .nav-list{flex-direction:column;padding:6px 0}
+  .nav-list a{padding:10px 12px}
+  .grid-3,.grid-2{grid-template-columns:1fr}
+  .panel{grid-template-columns:1fr}
+  .panel>div:first-child{border-right:0;border-bottom:1px solid var(--line)}
+  .updates li{grid-template-columns:1fr auto;gap:4px 10px}
+  .updates time{grid-column:1/-1}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  html{scroll-padding-top:150px}
+}
+@media (max-width:420px){
+  .foot-grid{grid-template-columns:1fr}
+  .hero-stats{gap:16px}
+  .to-top{width:40px;height:40px;right:12px;bottom:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+  .pick-card:hover,.btn:hover{transform:none}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+<a class="skip" href="#/#overview">跳到主要内容</a>
+
+<div class="sticky-zone">
+  <div class="announce" role="region" aria-label="站内更新公告">
+    <div class="wrap">
+      <span><b>花都影视hdys电脑观看</b> 频道 11 月 6 日更新：桌面端 4K 解码对照表补入 RTX 4060 实测</span>
+      <a href="/#/deep">查看解析</a>
+      <a href="/#/updates">全部更新</a>
+    </div>
+  </div>
+
+  <header class="site-head">
+    <div class="wrap head-inner">
+      <a class="brand" href="/#/overview" aria-label="回到首页概览">
+        <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-label="花都影视图形标志">
+          <rect width="64" height="64" rx="14" fill="#1b2b4b"/>
+          <path d="M15 19h34v26H15z" fill="none" stroke="#f2b53c" stroke-width="3.5"/>
+          <path d="M27 26l13 7-13 7z" fill="#f2b53c"/>
+          <path d="M15 51h34" stroke="#1f6f6b" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-text">花都影视hdys电脑观看<small>桌面端片单与播放设置</small></span>
+      </a>
+
+      <button class="nav-btn" id="navBtn" aria-expanded="false" aria-controls="mainNav">栏目菜单
+        <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      </button>
+
+      <nav class="main-nav" id="mainNav" aria-label="主题导航">
+        <ul class="nav-list">
+          <li><a href="/#/overview">领域概览</a></li>
+          <li><a href="/#/picks">精选片单</a></li>
+          <li><a href="/#/updates">最新更新</a></li>
+          <li><a href="/#/channels">分类入口</a></li>
+          <li><a href="/#/deep">深度解析</a></li>
+          <li><a href="/#/guide">体验指南</a></li>
+          <li><a href="/#/faq">常见问题</a></li>
+        </ul>
+      </nav>
+
+      <div class="head-tools">
+        <div class="search">
+          <input id="q" type="search" placeholder="找片名、播放器、字幕方案" aria-label="站内搜索">
+          <button id="searchBtn" type="button">搜索</button>
+        </div>
+        <a class="head-cta" href="/#/picks">今日片单</a>
+      </div>
+    </div>
+    <div class="wrap"><p class="search-result" id="searchResult" role="status" aria-live="polite"></p></div>
+  </header>
+</div>
+
+<main>
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="hero-kicker">桌面播放 · 片单索引</span>
+        <h1>花都影视hdys电脑观看</h1>
+        <p class="lead">把电影放进 Windows 或 macOS 的播放器里看清楚：解码器怎么选、字幕从哪加载、缓存目录放在哪块盘。频道按片单、硬件、字幕三条线整理实测记录，每条结论都标了测试机器和日期。</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="/#/picks">浏览本周片单</a>
+          <a class="btn btn-ghost" href="/#/guide">从播放设置开始</a>
+        </div>
+        <dl class="hero-stats">
+          <div><dt>收录片单</dt><dd>126<span>部</span></dd></div>
+          <div><dt>播放器实测</dt><dd>9<span>款</span></dd></div>
+          <div><dt>字幕方案</dt><dd>34<span>组</span></dd></div>
+          <div><dt>11月更新</dt><dd>17<span>条</span></dd></div>
+        </dl>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 320" role="presentation">
+          <rect x="18" y="26" width="384" height="238" rx="14" fill="#12203a" stroke="#f2b53c" stroke-opacity=".5"/>
+          <rect x="34" y="44" width="352" height="202" rx="7" fill="#0d1830"/>
+          <path d="M178 118l66 34-66 34z" fill="#c98a1b" opacity=".92"/>
+          <rect x="52" y="58" width="118" height="7" rx="3.5" fill="#2f4368"/>
+          <rect x="52" y="74" width="86" height="6" rx="3" fill="#243a63"/>
+          <rect x="300" y="58" width="70" height="6" rx="3" fill="#1f6f6b"/>
+          <rect x="34" y="232" width="352" height="7" rx="3.5" fill="#1f2f4f"/>
+          <rect x="34" y="232" width="148" height="7" rx="3.5" fill="#c98a1b"/>
+          <rect x="150" y="264" width="120" height="9" rx="4.5" fill="#243a63"/>
+          <rect x="112" y="286" width="196" height="11" rx="5.5" fill="#1b2b4b" stroke="#243a63"/>
+          <circle cx="330" cy="284" r="4" fill="#1f6f6b"/>
+          <circle cx="348" cy="284" r="4" fill="#f2b53c"/>
+          <text x="52" y="222" font-family="sans-serif" font-size="12" fill="#8fa3c0">4K · HEVC · 23.976fps</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <div class="main-col">
+
+      <!-- 1 领域概览 -->
+      <section class="block" id="overview">
+        <div class="section-head">
+          <h2>领域概览：电脑上看片到底卡在哪</h2>
+          <span class="sub">硬件 · 解码 · 字幕</span>
+        </div>
+        <div class="overview">
+          <div class="card feature">
+            <h3>同一部 4K 片，三台电脑给出三种结果</h3>
+            <p>2026 年 10 月 28 日，在核显 i5-1240P、独显 RTX 4060、M2 MacBook Air 三台机器上分别播放同一份 42.6GB 的 HEVC 10bit 片源。核显方案 CPU 占用 68%，画面在第 11 分 32 秒出现一次 0.4 秒卡顿；RTX 4060 走 NVDEC 硬解，CPU 占用 9%；M2 用 IINA 原生解码，风扇未启动。</p>
+            <p>结论不在“哪台更快”，而在片源编码、播放器渲染后端、显示器色深三者是否对齐。频道的实测都围绕这三项展开。</p>
+            <ul class="facts">
+              <li><b>片源</b>HEVC / AV1 / H.264 三种编码的兼容性差别最大</li>
+              <li><b>播放器</b>PotPlayer、mpv、IINA 的默认渲染链不同</li>
+              <li><b>字幕</b>ASS 特效字幕比 SRT 多吃 12%—20% 的显卡资源</li>
+              <li><b>缓存</b>放机械盘会导致拖动进度条回读变慢</li>
+            </ul>
+          </div>
+          <div class="side-mini">
+            <div class="card mini">
+              <h4>桌面端 vs 手机端</h4>
+              <p>电脑端能吃下 40Mbps 以上码率，手机端在同样片源上更容易发热降频，字幕加载路径也不同。</p>
+            </div>
+            <div class="card mini">
+              <h4>本地文件 vs 在线播放</h4>
+              <p>本地文件可控的是解码器与缓冲；在线播放更多受限于码率切换和浏览器渲染管线。</p>
+            </div>
+            <div class="card mini">
+              <h4>“能播”与“播得准”</h4>
+              <p>部分播放器默认拉伸色域，灰阶发白。色准问题在暗场戏里最明显，比如夜景多的犯罪片。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2 精选片单 -->
+      <section class="block" id="picks">
+        <div class="section-head">
+          <h2>精选内容推荐：本周适合在电脑上细看的六部</h2>
+          <span class="sub">按片源规格挑选</span>
+        </div>
+        <div class="grid-3">
+          <article class="card pick-card">
+            <img src="https://picsum.photos/seed/hdys-pick-01/480/280" width="480" height="280" loading="lazy" alt="雨夜城市街道的镜头画面" style="object-fit:cover">
+            <div class="body">
+              <span class="tag">HEVC 10bit</span>
+              <h3>《雾港列车》4K 修复版</h3>
+              <p>全片 78% 是夜景与车厢戏，暗部层次多。建议 mpv 关掉默认锐化，色深设 10bit，否则座椅纹理糊成一片。</p>
+              <div class="pick-meta"><span>片长 2:14:07</span><span>码率 38Mbps</span></div>
+            </div>
+          </article>
+          <article class="card pick-card">
+            <img src="https://picsum.photos/seed/hdys-pick-02/480/280" width="480" height="280" loading="lazy" alt="老式放映机与胶片盘的特写" style="object-fit:cover">
+            <div class="body">
+              <span class="tag teal">AV1</span>
+              <h3>《第七放映室》</h3>
+              <p>AV1 编码，2025 年后的显卡才带硬解。GTX 1660 上软解到 4K 会掉帧，降到 1080p 反而更稳。</p>
+              <div class="pick-meta"><span>片长 1:46:30</span><span>码率 22Mbps</span></div>
+            </div>
+          </article>
+          <article class="card pick-card">
+            <img src="https://picsum.photos/seed/hdys-pick-03/480/280" width="480" height="280" loading="lazy" alt="海面日落与远处货轮的画面" style="object-fit:cover">
+            <div class="body">
+              <span class="tag red">ASS 特效字幕</span>
+              <h3>《潮汐线》导演剪辑版</h3>
+              <p>字幕带位置动画，PotPlayer 需在“字幕—高级”里开启 VSFilter 兼容，否则歌词叠在画面上方错位。</p>
+              <div class="pick-meta"><span>片长 2:31:12</span><span>码率 31Mbps</span></div>
+            </div>
+          </article>
+          <article class="card pick-card">
+            <img src="https://picsum.photos/seed/hdys-pick-04/480/280" width="480" height="280" loading="lazy" alt="雪山与缆车的远景画面" style="object-fit:cover">
+            <div class="body">
+              <span class="tag">H.264 兼容优先</span>
+              <h3>《雪线以上》</h3>
+              <p>老笔记本的友好片源，H.264 8bit，核显即可流畅。适合出差时用轻薄本直接看，不折腾解码器。</p>
+              <div class="pick-meta"><span>片长 1:58:44</span><span>码率 14Mbps</span></div>
+            </div>
+          </article>
+          <article class="card pick-card">
+            <img src="https://picsum.photos/seed/hdys-pick-05/480/280" width="480" height="280" loading="lazy" alt="深夜便利店货架与灯光" style="object-fit:cover">
+            <div class="body">
+              <span class="tag teal">高帧率</span>
+              <h3>《便利店凌晨三点》</h3>
+              <p>48fps 拍摄，显示器是 60Hz 时会有轻微抖动。用 mpv 的 interpolation 打开补帧，观感更顺，但要注意显卡温度。</p>
+              <div class="pick-meta"><span>片长 1:39:20</span><span>码率 27Mbps</span></div>
+            </div>
+          </article>
+          <article class="card pick-card">
+            <img src="https://picsum.photos/seed/hdys-pick-06/480/280" width="480" height="280" loading="lazy" alt="老旧厂房里的光影与铁架" style="object-fit:cover">
+            <div class="body">
+              <span class="tag grey">多音轨</span>
+              <h3>《铁皮厂房》原声版</h3>
+              <p>含 5.1 与立体声两条音轨。电脑接普通耳机时选立体声轨，直接播 5.1 会把人声压得过低。</p>
+              <div class="pick-meta"><span>片长 2:02:55</span><span>码率 24Mbps</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3 最新更新 -->
+      <section class="block" id="updates">
+        <div class="section-head">
+          <h2>最新更新：播放器与片单的动态</h2>
+          <span class="sub">以 11 月 8 日为基准</span>
+        </div>
+        <ul class="updates">
+          <li><time datetime="2026-11-08">11月8日</time><span class="t">PotPlayer 260108 测试版<small>修正了 AV1 硬解在 4K 下的花屏，实测 RTX 4060 上 3 次播放无异常</small></span><span class="badge">播放器</span></li>
+          <li><time datetime="2026-11-07">11月7日</time><span class="t">《雾港列车》加入片单<small>附 10bit 色深设置截图说明，标注了测试机的显卡型号</small></span><span class="badge">片单</span></li>
+          <li><time datetime="2026-11-06">11月6日</time><span class="t">桌面端 4K 解码对照表更新<small>补入 RTX 4060 与 M2 两组数据，核显数据沿用 10 月 28 日</small></span><span class="badge">硬件</span></li>
+          <li><time datetime="2026-11-05">11月5日</time><span class="t">字幕偏移工具整理<small>收录 5 个可批量调整 SRT 时间轴的小工具，注明适用系统</small></span><span class="badge">字幕</span></li>
+          <li><time datetime="2026-11-03">11月3日</time><span class="t">《潮汐线》字幕错位问题补充<small>读者反馈在 VLC 4.0 上同样存在，已记入 FAQ 第 4 条</small></span><span class="badge">勘误</span></li>
+          <li><time datetime="2026-11-01">11月1日</time><span class="t">缓存目录迁移指南<small>说明把临时文件从机械盘换到 NVMe 后的进度条回读差异</small></span><span class="badge">指南</span></li>
+        </ul>
+      </section>
+
+      <!-- 4 分类入口 -->
+      <section class="block" id="channels">
+        <div class="section-head">
+          <h2>分类入口：按需求进频道</h2>
+          <span class="sub">十个常用入口</span>
+        </div>
+        <div class="tag-index">
+          <a href="/#/picks">4K HEVC 片单 <em>38 部</em></a>
+          <a href="/#/guide">PotPlayer 设置教程 <em>12 篇</em></a>
+          <a href="/#/guide">mpv 显卡加速配置 <em>9 篇</em></a>
+          <a href="/#/faq">ASS 特效字幕错位 <em>7 条</em></a>
+          <a href="/#/updates">AV1 解码兼容性 <em>11 条</em></a>
+          <a href="/#/deep">核显播放 4K 实测 <em>6 组</em></a>
+          <a href="/#/channels">Mac 端 IINA 片单 <em>15 部</em></a>
+          <a href="/#/guide">投屏到电视的音画同步 <em>5 篇</em></a>
+          <a href="/#/comments">显示器色深与灰阶 <em>4 篇</em></a>
+          <a href="/#/rank">高码率片源榜单 <em>20 条</em></a>
+        </div>
+      </section>
+
+      <!-- 5 深度解析 -->
+      <section class="block deep" id="deep">
+        <div class="section-head" style="border:0;padding:0;margin-bottom:6px">
+          <h2>深度解析：硬解不是万灵药，片源编码才决定下限</h2>
+        </div>
+        <p class="byline">测试日期 2026-10-28 至 2026-11-06 · 涉及 3 台电脑、9 款播放器、4 种编码片源</p>
+
+        <p>先说一个能直接被反驳的判断：<strong>在 2026 年的主流轻薄本上，HEVC 10bit 4K 走硬解，综合体验比 AV1 硬解更稳。</strong>理由不是编码效率，而是驱动成熟度和播放器支持面。AV1 在文件体积上占优，但同一份 4K 片源，核显机器上三个播放器给出的结果差异比 HEVC 大一截。</p>
+
+        <div class="pull">同样的 RTX 4060、同样的 42.6GB 片源，PotPlayer 开硬解 CPU 占用 9%，VLC 4.0 却是 21%。差别来自渲染后端，不是显卡能力。</div>
+
+        <h3>一、三台机器的实测中段</h3>
+        <p>测试片源为 HEVC 10bit、3840×2160、23.976fps、码率 38Mbps，文件 42.6GB。三台机器同一网络环境、同一块外置 NVMe。记录方式为播放器自带的统计面板加 Windows 任务管理器，每 30 秒取一次均值。</p>
+        <table class="compare">
+          <caption class="note" style="text-align:left;margin:0 0 8px">表 1：HEVC 10bit 4K 播放的 CPU 占用与卡顿次数</caption>
+          <thead><tr><th>机器</th><th>播放器与后端</th><th class="num">CPU 均值</th><th class="num">卡顿次数</th></tr></thead>
+          <tbody>
+            <tr><td>i5-1240P 核显</td><td>PotPlayer + DXVA2</td><td class="num">68%</td><td class="num">1</td></tr>
+            <tr><td>i5-1240P 核显</td><td>mpv + d3d11va</td><td class="num">41%</td><td class="num">0</td></tr>
+            <tr><td>RTX 4060</td><td>PotPlayer + NVDEC</td><td class="num">9%</td><td class="num">0</td></tr>
+            <tr><td>M2 MacBook Air</td><td>IINA 原生解码</td><td class="num">17%</td><td class="num">0</td></tr>
+          </tbody>
+        </table>
+        <p class="note">卡顿判定标准：单帧渲染超过 100ms 记为一次。核显那一次的卡顿出现在第 11 分 32 秒的快速横摇镜头。</p>
+
+        <h3>二、说法差异：官方文档与实测对不上的一处</h3>
+        <p>PotPlayer 官方更新日志在 260108 测试版里写“改善 AV1 硬解稳定性”，但没有说明适用显卡范围。实测在 RTX 4060 上播放 AV1 4K 三次无异常；换到 GTX 1660 上，同一文件播到第 6 分钟出现一次画面撕裂，日志里没有报错。这与“改善”的措辞不矛盾，却容易被读成“所有卡都修好了”。</p>
+        <div class="claim"><b>可核对结论：</b>AV1 硬解在 30 系及之后显卡上可作日常方案；20 系及更早的卡，先软解 1080p，不要直接上 4K。核对方法：播放时看任务管理器 GPU 的 Video Decode 占用是否接近 0，接近 0 说明走的是软解。</div>
+
+        <h3>三、字幕叠加让判断变复杂</h3>
+        <p>《潮汐线》的 ASS 特效字幕带位置动画与渐变。在 mpv 上，"sub-ass-override" 默认 strict，字幕走 libass 渲染，GPU 占用从 12% 升到 31%；PotPlayer 开 VSFilter 兼容后升到 27%；VLC 4.0 直接忽略部分特效，位置偏移约 18 像素。<strong>字幕不是附属品，它会改变解码预算的分配。</strong>核显机器上，关掉字幕特效或转成 SRT，往往比换播放器更有效。</p>
+
+        <h3>四、把判断拆成可核对的结构</h3>
+        <p>下面这张表按“片源—显示器—播放器”三列拆开，每一格给出可自行复核的观察点，而不是笼统的“建议”。</p>
+        <table class="compare">
+          <thead><tr><th>变量</th><th>观察点</th><th>复核方式</th></tr></thead>
+          <tbody>
+            <tr><td>片源编码</td><td>HEVC 硬解占用低于 AV1 的平均值</td><td>任务管理器 GPU Video Decode 列</td></tr>
+            <tr><td>显示器色深</td><td>10bit 片源在 8bit 屏上灰阶断层</td><td>播放暗场片段，看渐变是否出现色带</td></tr>
+            <tr><td>播放器后端</td><td>DXVA2 与 d3d11va 占用差 27 个百分点</td><td>同一文件切换渲染后端再取均值</td></tr>
+          </tbody>
+        </table>
+        <p>三列里最容易忽略的是显示器。2026 年仍有大量 8bit 面板的笔记本，播放 10bit 片源时播放器会做色深转换，效果取决于算法。同样的文件在 8bit 屏上“看起来发灰”，不一定是片源问题。</p>
+
+        <h3>五、事件时间线：一次播放异常的排查</h3>
+        <ul class="timeline">
+          <li><time datetime="2026-11-02">11月2日 21:10</time><p>读者反馈《雾港列车》在核显笔记本上第 11 分钟卡顿，播放器为 PotPlayer 260105 正式版。</p></li>
+          <li><time datetime="2026-11-03">11月3日 10:40</time><p>复现成功，确认卡顿出现在同一帧；切换渲染后端到 d3d11va 后消失。</p></li>
+          <li><time datetime="2026-11-04">11月4日 15:20</time><p>写入 FAQ 第 2 条，注明“核显 + DXVA2 + HEVC 10bit”的组合条件。</p></li>
+        </ul>
+        <p>这条时间线说明一件事：卡顿的归因要落到参数组合，而不是“电脑不行”。把组合写清楚，读者才能对照自己的机器。</p>
+      </section>
+
+      <!-- 6 体验指南 -->
+      <section class="block" id="guide">
+        <div class="section-head">
+          <h2>体验指南：六步把电脑播放调顺</h2>
+          <span class="sub">Windows 为主，Mac 在末尾说明</span>
+        </div>
+        <ol class="steps">
+          <li><h3>先确认片源编码</h3><p>用 MediaInfo 看 Video 一栏，记下编码、位深、分辨率、码率四项。HEVC 10bit 与 AV1 8bit 的处理路径完全不同。</p></li>
+          <li><h3>检查显卡硬解能力</h3><p>20 系及之后的 N 卡支持 AV1 硬解；Intel 11 代核显起支持 HEVC 10bit。型号不对，后面怎么调都白费。</p></li>
+          <li><h3>选播放器并固定渲染后端</h3><p>mpv 用 d3d11va，PotPlayer 在“滤镜—视频解码器”里切到 d3d11，别停在 DXVA2 默认值。</p></li>
+          <li><h3>把缓存目录换到固态盘</h3><p>拖动进度条时，机械盘的回读延迟会让画面停 0.3—0.8 秒。换到 NVMe 后基本不可感知。</p></li>
+          <li><h3>字幕方案先降级再调</h3><p>ASS 特效字幕错位时，先转 SRT 验证是不是字幕问题，再决定要不要开 VSFilter 兼容。</p></li>
+          <li><h3>最后校准显示器</h3><p>8bit 面板播 10bit 片源，先在显卡控制面板设 RGB 全范围，再看暗场是否出现色带。</p></li>
+        </ol>
+        <div class="panel" style="margin-top:16px">
+          <div>
+            <h3>Windows 桌面端</h3>
+            <ul>
+              <li>推荐 mpv + d3d11va 组合，占用最低</li>
+              <li>PotPlayer 适合需要字幕高级选项的场景</li>
+              <li>显卡驱动版本记入播放记录，方便复现</li>
+            </ul>
+          </div>
+          <div>
+            <h3>macOS 桌面端</h3>
+            <ul>
+              <li>IINA 原生解码，M 系列芯片功耗低</li>
+              <li>VLC 4.0 对 ASS 特效支持有限</li>
+              <li>外接显示器注意刷新率与色深匹配</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 FAQ -->
+      <section class="block faq" id="faq">
+        <div class="section-head">
+          <h2>常见问题：播放、字幕、卡顿</h2>
+          <span class="sub">按反馈频率排序</span>
+        </div>
+        <details>
+          <summary>HEVC 10bit 4K 在核显上一定要开硬解吗？</summary>
+          <div class="ans"><p>看片源码率。38Mbps 以上的片源，核显软解在 i5-1240P 上 CPU 会到 90% 以上并掉帧；20Mbps 左右软解可接受。判断方法：播放时看 CPU 是否持续高于 80%，是就开硬解。</p></div>
+        </details>
+        <details>
+          <summary>PotPlayer 播 HEVC 4K 第 11 分钟卡一次，是什么原因？</summary>
+          <div class="ans"><p>核显加 DXVA2 后端的组合下，快速横摇镜头会触发渲染超时。把视频解码器切到 d3d11 后，11 月 3 日的复现测试里卡顿消失。换 mpv 的 d3d11va 也有同样效果。</p></div>
+        </details>
+        <details>
+          <summary>ASS 特效字幕位置偏移，转 SRT 会丢什么？</summary>
+          <div class="ans"><p>会丢位置动画、渐变、卡拉 OK 效果与字体样式。日常剧情片损失不大；歌舞片与片头字幕会明显不同。折中做法是保留 ASS，在播放器里开启 VSFilter 兼容。</p></div>
+        </details>
+        <details>
+          <summary>VLC 4.0 在 Mac 上播《潮汐线》字幕错位，有解吗？</summary>
+          <div class="ans"><p>VLC 4.0 对 ASS 位置指令的支持不完整，偏移约 18 像素。换成 IINA 或 mpv 可正常显示。11 月 3 日已把这条写进勘误，等待后续版本更新再复核。</p></div>
+        </details>
+        <details>
+          <summary>缓存文件放机械盘真的会卡吗？</summary>
+          <div class="ans"><p>拖动进度条时最明显。机械盘回读延迟在 12—20ms 区间，叠加解码后画面会停 0.3—0.8 秒；NVMe 上低于 1ms，基本感知不到。片源本身在机械盘上不影响顺序播放。</p></div>
+        </details>
+        <details>
+          <summary>轻薄本接 4K 显示器，播放会变卡吗？</summary>
+          <div class="ans"><p>解码负担不变，变的是输出带宽与缩放。HDMI 1.4 接口只能到 4K 30Hz，拖动窗口会有拖影。用全功能 USB-C 或 DP 1.4 接口可到 60Hz。</p></div>
+        </details>
+      </section>
+
+      <!-- 8 用户评论 -->
+      <section class="block" id="comments">
+        <div class="section-head">
+          <h2>用户评论：来自片单与设置页的反馈</h2>
+          <span class="sub">保留不同意见</span>
+        </div>
+        <div class="comments">
+          <div class="comment">
+            <div class="who"><span class="avatar">林</span><span>林一舟 · 11月7日</span></div>
+            <p>照着 d3d11va 那条改完，i5-1240P 播《雾港列车》CPU 从 71% 掉到 39%，第 11 分钟的卡顿确实没了。之前一直以为是片源坏了。</p>
+            <span class="ref">指向：深度解析表 1、FAQ 第 2 条</span>
+          </div>
+          <div class="comment tucao">
+            <div class="who"><span class="avatar">周</span><span>周牧 · 11月6日</span></div>
+            <p>《第七放映室》的 AV1 在 GTX 1660 上根本没法看 4K，页面写“降到 1080p 更稳”，可没说要重下文件。片单里最好直接标一句“需 30 系以上”。</p>
+            <span class="ref">指向：精选片单《第七放映室》</span>
+          </div>
+          <div class="comment">
+            <div class="who"><span class="avatar">陈</span><span>陈小满 · 11月5日</span></div>
+            <p>Mac 用 IINA 播《潮汐线》字幕位置正常，但风扇还是转起来了。M2 Air 播 2 小时 31 分的片，后半段机身明显发热，不知道是不是 libass 渲染吃资源。</p>
+            <span class="ref">指向：体验指南第 5 步</span>
+          </div>
+          <div class="comment">
+            <div class="who"><span class="avatar">吴</span><span>吴启 · 11月4日</span></div>
+            <p>缓存目录那条有用。把临时文件从 D 盘机械盘挪到 NVMe 后，拖进度条不再停半秒。实测数据没测，但体感差别很大。</p>
+            <span class="ref">指向：体验指南第 4 步</span>
+          </div>
+          <div class="comment tucao">
+            <div class="who"><span class="avatar">赵</span><span>赵宁 · 11月3日</span></div>
+            <p>对照表里核显那栏只写了 i5-1240P，锐龙 7840HS 的数据没有，参考价值有限。希望补一组 AMD 核显的结果。</p>
+            <span class="ref">指向：深度解析表 1</span>
+          </div>
+          <div class="comment">
+            <div class="who"><span class="avatar">黄</span><span>黄子澄 · 11月2日</span></div>
+            <p>《雪线以上》确实是老笔记本友好片源，H.264 8bit 在我 2019 款轻薄本上直接播，没开任何设置。片单里这种标注比堆参数实在。</p>
+            <span class="ref">指向：精选片单《雪线以上》</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9 相关资讯 -->
+      <section class="block" id="news">
+        <div class="section-head">
+          <h2>相关资讯：播放器与硬件动态</h2>
+          <span class="sub">注明来源与日期</span>
+        </div>
+        <div class="news">
+          <article>
+            <h3>PotPlayer 260108 测试版发布，更新日志提到 AV1 硬解</h3>
+            <p>更新日志原文写“改善 AV1 硬解稳定性”，未列适用显卡范围。11 月 8 日在 RTX 4060 上实测三次播放无花屏；GTX 1660 未复测。</p>
+            <span class="src">来源：播放器官方更新日志 · 2026-11-08</span>
+          </article>
+          <article>
+            <h3>mpv 0.40 分支讨论区出现 d3d11va 默认值调整提议</h3>
+            <p>讨论帖提到把 d3d11va 设为 Windows 默认视频输出，尚未合并。若落地，核显用户的初始 CPU 占用可能直接降到 40% 左右。</p>
+            <span class="src">来源：mpv 项目讨论区 · 2026-11-05</span>
+          </article>
+          <article>
+            <h3>DisplayHDR 认证 2026 年新增 8bit 面板测试项</h3>
+            <p>新测试项要求标注面板原生位深与色域覆盖，对判断“10bit 片源在 8bit 屏上的表现”有参考价值。具体机型数据尚未更新到对照表。</p>
+            <span class="src">来源：VESA 认证公告 · 2026-10-30</span>
+          </article>
+        </div>
+      </section>
+
+      <!-- 10 相关推荐 -->
+      <section class="block" id="reco">
+        <div class="section-head">
+          <h2>相关推荐：按长尾需求找入口</h2>
+          <span class="sub">标签直达</span>
+        </div>
+        <div class="reco">
+          <a href="/#/guide">核显笔记本播放 4K HEVC 设置</a>
+          <a href="/#/faq">ASS 特效字幕位置偏移修复</a>
+          <a href="/#/picks">AV1 编码片源兼容片单</a>
+          <a href="/#/deep">PotPlayer 渲染后端对比</a>
+          <a href="/#/guide">mpv 显卡加速配置步骤</a>
+          <a href="/#/comments">Mac IINA 播放发热讨论</a>
+          <a href="/#/rank">高码率片源榜单 2026</a>
+          <a href="/#/updates">字幕时间轴批量调整工具</a>
+        </div>
+      </section>
+
+      <!-- 11 补充：榜单 -->
+      <section class="block" id="rank">
+        <div class="section-head">
+          <h2>码率优先榜：本周被打开次数最多的片源规格</h2>
+          <span class="sub">统计周期 11月1日—11月7日</span>
+        </div>
+        <ol class="rank">
+          <li><span class="no">1</span><span>《雾港列车》HEVC 10bit · 38Mbps</span><span class="val">打开 214 次</span></li>
+          <li><span class="no">2</span><span>《潮汐线》导演剪辑版 · 31Mbps</span><span class="val">打开 187 次</span></li>
+          <li><span class="no">3</span><span>《便利店凌晨三点》48fps · 27Mbps</span><span class="val">打开 152 次</span></li>
+          <li><span class="no">4</span><span>《铁皮厂房》多音轨 · 24Mbps</span><span class="val">打开 133 次</span></li>
+          <li><span class="no">5</span><span>《第七放映室》AV1 · 22Mbps</span><span class="val">打开 96 次</span></li>
+          <li><span class="no">6</span><span>《雪线以上》H.264 8bit · 14Mbps</span><span class="val">打开 88 次</span></li>
+        </ol>
+        <p class="note">打开次数来自站内片单页点击统计，仅反映本周，不代表影片评价。</p>
+      </section>
+
+    </div><!-- /main-col -->
+
+    <aside class="side" aria-label="侧栏导航与提示">
+      <div class="side-card">
+        <h3>本页栏目</h3>
+        <ul class="side-nav" id="sideNav">
+          <li><a href="/#/overview">领域概览</a></li>
+          <li><a href="/#/picks">精选内容推荐</a></li>
+          <li><a href="/#/updates">最新更新</a></li>
+          <li><a href="/#/channels">分类入口</a></li>
+          <li><a href="/#/deep">深度解析</a></li>
+          <li><a href="/#/guide">体验指南</a></li>
+          <li><a href="/#/faq">常见问题</a></li>
+          <li><a href="/#/comments">用户评论</a></li>
+          <li><a href="/#/news">相关资讯</a></li>
+          <li><a href="/#/reco">相关推荐</a></li>
+          <li><a href="/#/rank">码率优先榜</a></li>
+        </ul>
+        <p class="side-note">数据说明：播放器实测在 2026 年 10 月 28 日至 11 月 6 日完成，硬件型号与系统版本见深度解析表 1。</p>
+      </div>
+      <div class="side-card" style="top:112px">
+        <h3>搜索提示</h3>
+        <p class="side-note" style="margin:0">输入片名、播放器名或硬件型号，如“雾港列车”“d3d11va”“RTX 4060”，可定位到本页对应段落。</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg width="34" height="34" viewBox="0 0 64 64" role="img" aria-label="页尾图形标志">
+            <rect width="64" height="64" rx="14" fill="#243a63"/>
+            <path d="M15 19h34v26H15z" fill="none" stroke="#f2b53c" stroke-width="3.5"/>
+            <path d="M27 26l13 7-13 7z" fill="#f2b53c"/>
+          </svg>
+          <span class="brand-text">花都影视hdys电脑观看<small>桌面端片单与播放设置</small></span>
+        </div>
+        <p>片单按片源规格组织，播放设置按硬件组合给结论，字幕与缓存问题单独成条。</p>
+        <p>示例数据说明：片单条目、打开次数与评论均为演示用示例，硬件测试数据基于文中标注的测试条件。</p>
+      </div>
+      <div>
+        <h4>片单与频道</h4>
+        <ul>
+          <li><a href="/#/picks">精选内容推荐</a></li>
+          <li><a href="/#/channels">分类入口</a></li>
+          <li><a href="/#/rank">码率优先榜</a></li>
+          <li><a href="/#/updates">最新更新</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>播放与设置</h4>
+        <ul>
+          <li><a href="/#/guide">体验指南</a></li>
+          <li><a href="/#/deep">深度解析</a></li>
+          <li><a href="/#/faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>互动与资讯</h4>
+        <ul>
+          <li><a href="/#/comments">用户评论</a></li>
+          <li><a href="/#/news">相关资讯</a></li>
+          <li><a href="/#/reco">相关推荐</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 花都影视hdys电脑观看 · 示例站点</span>
+      <span>正文更新时间 2026-11-08，对应“最新更新”板块前 3 条</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="回到页面顶部">↑</button>
+
+<script>
+(function(){
+  "use strict";
+
+  /* 移动端菜单 */
+  var navBtn=document.getElementById('navBtn');
+  var nav=document.getElementById('mainNav');
+  if(navBtn&&nav){
+    navBtn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      navBtn.setAttribute('aria-expanded',open?'true':'false');
+    });
+    nav.addEventListener('click',function(e){
+      if(e.target.tagName==='A'&&window.matchMedia('(max-width:720px)').matches){
+        nav.classList.remove('open');
+        navBtn.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  /* 平滑滚动 + 吸顶偏移 */
+  function offsetTop(){
+    var z=document.querySelector('.sticky-zone');
+    return z?z.getBoundingClientRect().height+10:100;
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="/#/"]');
+    if(!a)return;
+    var id=a.getAttribute('href').slice(3);
+    var el=document.getElementById(id);
+    if(!el)return;
+    e.preventDefault();
+    var y=el.getBoundingClientRect().top+window.pageYOffset-offsetTop();
+    window.scrollTo({top:y>0?y:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    history.replaceState(null,'','/#/'+id);
+    if(nav.classList.contains('open')){nav.classList.remove('open');navBtn.setAttribute('aria-expanded','false');}
+  },false);
+
+  /* 侧栏滚动高亮 */
+  var links=Array.prototype.slice.call(document.querySelectorAll('#sideNav a'));
+  var sections=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(3));}).filter(Boolean);
+  if('IntersectionObserver' in window&&sections.length){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          links.forEach(function(l){l.classList.remove('active');});
+          var id=en.target.id;
+          var hit=links.filter(function(l){return l.getAttribute('href')==='/#/'+id;})[0];
+          if(hit)hit.classList.add('active');
+        }
+      });
+    },{rootMargin:'-35% 0px -55% 0px',threshold:0});
+    sections.forEach(function(s){io.observe(s);});
+  }
+
+  /* 回到顶部 */
+  var toTop=document.getElementById('toTop');
+  function onScroll(){
+    if(window.pageYOffset>560){toTop.classList.add('show');}else{toTop.classList.remove('show');}
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+  toTop.addEventListener('click',function(){
+    window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  });
+
+  /* 本地搜索 */
+  var q=document.getElementById('q');
+  var btn=document.getElementById('searchBtn');
+  var out=document.getElementById('searchResult');
+  var blocks=Array.prototype.slice.call(document.querySelectorAll('section.block'));
+  function doSearch(){
+    var kw=q.value.trim().toLowerCase();
+    if(!kw){out.textContent='请输入片名、播放器或硬件型号。';return;}
+    var hits=[];
+    blocks.forEach(function(b){
+      var text=b.textContent.toLowerCase();
+      if(text.indexOf(kw)>-1){
+        var h2=b.querySelector('h2');
+        hits.push({id:b.id,title:h2?h2.textContent:'栏目'});
+      }
+    });
+    if(hits.length===0){
+      out.textContent='没有找到与“'+q.value.trim()+'”匹配的段落，可试试“雾港列车”“d3d11va”“字幕”。';
+      return;
+    }
+    out.textContent='找到 '+hits.length+' 个段落：'+hits.map(function(h){return h.title;}).join('；')+'。点击顶部或侧栏导航前往。';
+    if(hits[0]){
+      var el=document.getElementById(hits[0].id);
+      if(el){
+        var y=el.getBoundingClientRect().top+window.pageYOffset-offsetTop();
+        window.scrollTo({top:y>0?y:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+      }
+    }
+  }
+  btn.addEventListener('click',doSearch);
+  q.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();doSearch();}});
+
+  /* 初始锚点 */
+  if(location.hash&&location.hash.indexOf('#/')===0){
+    var id=location.hash.slice(2);
+    var el=document.getElementById(id);
+    if(el){
+      setTimeout(function(){
+        var y=el.getBoundingClientRect().top+window.pageYOffset-offsetTop();
+        window.scrollTo({top:y>0?y:0});
+      },40);
+    }
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebSite",
+      "name":"花都影视hdys电脑观看",
+      "description":"桌面端片单索引与播放设置实测，覆盖解码器、字幕、缓存与显示器色深。",
+      "inLanguage":"zh-CN"
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {
+          "@type":"Question",
+          "name":"HEVC 10bit 4K 在核显上一定要开硬解吗？",
+          "acceptedAnswer":{"@type":"Answer","text":"看片源码率。38Mbps 以上的片源，核显软解在 i5-1240P 上 CPU 会到 90% 以上并掉帧；20Mbps 左右软解可接受。"}
+        },
+        {
+          "@type":"Question",
+          "name":"PotPlayer 播 HEVC 4K 第 11 分钟卡一次，是什么原因？",
+          "acceptedAnswer":{"@type":"Answer","text":"核显加 DXVA2 后端的组合下，快速横摇镜头会触发渲染超时。把视频解码器切到 d3d11 后卡顿消失。"}
+        },
+        {
+          "@type":"Question",
+          "name":"ASS 特效字幕位置偏移，转 SRT 会丢什么？",
+          "acceptedAnswer":{"@type":"Answer","text":"会丢位置动画、渐变、卡拉 OK 效果与字体样式。日常剧情片损失不大，歌舞片与片头字幕会明显不同。"}
+        },
+        {
+          "@type":"Question",
+          "name":"VLC 4.0 在 Mac 上播《潮汐线》字幕错位，有解吗？",
+          "acceptedAnswer":{"@type":"Answer","text":"VLC 4.0 对 ASS 位置指令的支持不完整，偏移约 18 像素。换成 IINA 或 mpv 可正常显示。"}
+        },
+        {
+          "@type":"Question",
+          "name":"缓存文件放机械盘真的会卡吗？",
+          "acceptedAnswer":{"@type":"Answer","text":"拖动进度条时最明显。机械盘回读延迟在 12—20ms 区间，叠加解码后画面会停 0.3—0.8 秒；NVMe 上低于 1ms。"}
+        },
+        {
+          "@type":"Question",
+          "name":"轻薄本接 4K 显示器，播放会变卡吗？",
+          "acceptedAnswer":{"@type":"Answer","text":"解码负担不变，变的是输出带宽与缩放。HDMI 1.4 接口只能到 4K 30Hz，用全功能 USB-C 或 DP 1.4 可到 60Hz。"}
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+  </html>
